@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Comparison | Project Datavisualisatie</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-air,near-midnight,alt,wide.9b64840a.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,near-midnight,alt,wide.9b64840a.css">
+<link rel="modulepreload" href="./_observablehq/client.46fbaf7a.js">
+<link rel="modulepreload" href="./_observablehq/runtime.607a8173.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.277aeab8.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/vega-lite.7a001ba6.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/9cffc2bd.js">
+<link rel="modulepreload" href="./_npm/vega-lite-api@6.0.0/fb964333.js">
+<link rel="modulepreload" href="./_npm/vega-lite@6.4.3/93808549.js">
+<link rel="modulepreload" href="./_npm/vega@6.2.0/ba44c340.js">
+<link rel="modulepreload" href="./_npm/vega-util@2.1.0/80ac7d14.js">
+<link rel="modulepreload" href="./_npm/vega-event-selector@4.0.0/1d939481.js">
+<link rel="modulepreload" href="./_npm/vega-expression@6.1.0/6c26820f.js">
+<link rel="modulepreload" href="./_npm/vega-dataflow@6.1.0/9ea261a7.js">
+<link rel="modulepreload" href="./_npm/vega-transforms@5.1.0/66f2ccc5.js">
+<link rel="modulepreload" href="./_npm/vega-view-transforms@5.1.0/25f0de03.js">
+<link rel="modulepreload" href="./_npm/vega-encode@5.1.0/8e97ef6f.js">
+<link rel="modulepreload" href="./_npm/vega-geo@5.1.0/660bd1bf.js">
+<link rel="modulepreload" href="./_npm/vega-force@5.1.0/896c5484.js">
+<link rel="modulepreload" href="./_npm/vega-hierarchy@5.1.0/206a50fb.js">
+<link rel="modulepreload" href="./_npm/vega-label@2.1.0/60c04238.js">
+<link rel="modulepreload" href="./_npm/vega-regression@2.1.0/4c5e082c.js">
+<link rel="modulepreload" href="./_npm/vega-voronoi@5.1.0/8ab8bdfa.js">
+<link rel="modulepreload" href="./_npm/vega-wordcloud@5.1.0/5ab9a9b7.js">
+<link rel="modulepreload" href="./_npm/vega-crossfilter@5.1.0/dbf32186.js">
+<link rel="modulepreload" href="./_npm/vega-statistics@2.0.0/ad9c9521.js">
+<link rel="modulepreload" href="./_npm/vega-time@3.1.0/bddd9130.js">
+<link rel="modulepreload" href="./_npm/vega-loader@5.1.0/e7368828.js">
+<link rel="modulepreload" href="./_npm/vega-scenegraph@5.1.0/ac74f9bb.js">
+<link rel="modulepreload" href="./_npm/vega-scale@8.1.0/ca7b6877.js">
+<link rel="modulepreload" href="./_npm/vega-projection@2.1.0/d1651e32.js">
+<link rel="modulepreload" href="./_npm/vega-view@6.1.0/b3f91751.js">
+<link rel="modulepreload" href="./_npm/vega-format@2.1.0/b5723669.js">
+<link rel="modulepreload" href="./_npm/vega-functions@6.1.1/6153a935.js">
+<link rel="modulepreload" href="./_npm/vega-parser@7.1.0/8bfef0c5.js">
+<link rel="modulepreload" href="./_npm/vega-runtime@7.1.0/3fc4e528.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/e93ca09f.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/8d1e5425.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/40599fb3.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/aeb57b94.js">
+<link rel="modulepreload" href="./_npm/vega-canvas@2.0.0/00b4c42d.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/5e804d15.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/e49e792c.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/87adea64.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/9f03c579.js">
+<link rel="modulepreload" href="./_npm/topojson-client@3.1.0/edd9ee95.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/6d3a6726.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/20d3f133.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/720b7f0a.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/ba24c2e7.js">
+<link rel="modulepreload" href="./_npm/d3-geo-projection@4.0.0/a9139ff5.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/b58a267d.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.2/3785bf2d.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/07c9626f.js">
+<link rel="modulepreload" href="./_npm/vega-selections@6.1.2/a1f1b6b2.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/e08981d9.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/0dfd751c.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/9ba9c7f3.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.1.0/d4ec0aa1.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.3/42820bfa.js">
+<link rel="icon" href="./_file/observable.1af93621.png" type="image/png" sizes="32x32">
+<script type="module">
+
+import {define} from "./_observablehq/client.46fbaf7a.js";
+import {registerFile} from "./_observablehq/stdlib.277aeab8.js";
+
+registerFile("./data/Countries_Comparison@1.csv", {"name":"./data/Countries_Comparison@1.csv","mimeType":"text/csv","path":"./_file/data/Countries_Comparison@1.61192cb6.csv","lastModified":1777294405898,"size":11113});
+
+define({id: "27dbdb90", outputs: ["questions"], body: () => {
+const questions= ['Engaged in religious/spiritual activities','Took prescribed medication','Improved healthy lifestyle behaviors','Made a change to work situation','Made a change to personal relationships','Talked to friends or family','Spent time in nature/the outdoors','Talked to mental health professional']
+return {questions};
+}});
+
+define({id: "17f62330", outputs: ["colors"], body: () => {
+const colors= ['blue','pink','yellow']
+return {colors};
+}});
+
+define({id: "9731bceb", inputs: ["vl","questions"], outputs: ["DynamicPlot"], body: (vl,questions) => {
+function DynamicPlot(data,{width}={}){
+return vl.markBar().data(data)
+  .params(
+    vl.param('Question1').value(questions[0]).bind(vl.menu(questions)),
+    vl.param('Question2').value(questions[1]).bind(vl.menu(questions))
+  )
+  .transform(
+    vl.filter('datum.Continent != "All"'),
+    // 1. Create the dynamic field first
+    vl.calculate('datum[Question1]').as('dynamicQ1'),
+     vl.calculate('datum[Question2]').as('dynamicQ2'),
+    // 2. "Fold" the two columns you want to compare into rows
+    vl.fold(['dynamicQ1', 'dynamicQ2',])
+      .as('Category', 'Percentage')
+  )
+  .encode(
+    vl.x().fieldN('Continent'),
+    vl.y().average('Percentage').title('Mean Percentage'),
+    // 3. Use the new 'Category' field for grouping and color
+    vl.xOffset().fieldN('Category'),
+    vl.color().fieldN('Category')
+    .legend({
+      labelExpr: "datum.label == 'dynamicQ1' ? Question1 : Question2",
+      labelFontSize:'11',
+      labelLimit:'200'
+    })
+  )
+  .render()
+ }
+return {DynamicPlot};
+}});
+
+define({id: "f5cabafe", mode: "inline", inputs: ["resize","DynamicPlot","countries","display"], body: async (resize,DynamicPlot,countries,display) => {
+display(await(
+resize((width) => DynamicPlot(countries, {width}))
+))
+}});
+
+define({id: "2cdab15b", inputs: ["FileAttachment"], outputs: ["countries"], body: (FileAttachment) => {
+const countries = FileAttachment("./data/Countries_Comparison@1.csv").csv();
+return {countries};
+}});
+
+define({id: "032dbd2c", inputs: ["vl"], outputs: ["staticPlot"], body: (vl) => {
+function staticPlot(data, {width} = {}) {
+ return vl.markCircle()
+  .data(data) 
+  .transform(
+    vl.filter('datum.Continent != "All"')
+  )
+.encode(
+  vl.x().fieldQ('Engaged in religious/spiritual activities'),
+  vl.y().fieldQ('Took prescribed medication'),
+  vl.color().fieldN('Continent'),
+  vl.tooltip(['Entity'])
+).title('Static plot').render()
+};
+//display( await staticPlot(countries));
+return {staticPlot};
+}});
+
+define({id: "435b79d1", inputs: ["vl"], outputs: ["staticPlot1"], body: (vl) => {
+function staticPlot1(data,{width}={}){
+  const hover=vl.selectPoint().on('mouseover').toggle('false').nearest('false');
+  const hoverOrClick=vl.or(hover.empty(false));
+  const values= [{"x":0, "y":0}, {"x":20, "y":20},{"x":40, "y":40},{"x":60, "y":60}, {"x":80, "y":80}, {"x":100, "y":100}];
+  const line= vl.markLine({stroke:'black',strokeDash:[4,4],strokeWidth:1.5}).data(values).encode(
+  vl.x().fieldQ("x"),
+  vl.y().fieldQ("y"),
+
+);
+
+  const plot= vl.markCircle()
+  .data(data) 
+  .transform(
+    vl.filter('datum.Continent != "All"')
+  )
+.encode(
+  vl.x().fieldQ('Engaged in religious/spiritual activities').title('Engaged in religious/spiritual activities'),
+  vl.y().fieldQ('Took prescribed medication').title('Took prescribed medication'),
+  vl.color().fieldN('Continent')
+);
+
+  const base = plot.transform(vl.filter(vl.or('datum.Entity=="Belgium"', hoverOrClick)));
+  const halo={size:100,stoke:'firebrick', strokewidth:2};
+  const label={dx:4,dy:-8,align:'right'};
+  const white={stroke:'white',strokeWidth:2};
+  
+  return vl.layer(plot.params(hover),base.markPoint(halo), base.markText(label).encode(vl.text().fieldN('Entity')),line).render()
+};
+//display( await staticPlot1(countries));
+return {staticPlot1};
+}});
+
+define({id: "e7c3a567", inputs: ["vl"], outputs: ["staticPlot2"], body: (vl) => {
+function staticPlot2(data,{width}={}){
+  const hover=vl.selectPoint().on('mouseover').toggle('false').nearest('false');
+  const hoverOrClick=vl.or(hover.empty(false));
+  const values= [{"x":0, "y":0}, {"x":20, "y":20},{"x":40, "y":40},{"x":60, "y":60}, {"x":80, "y":80}, {"x":100, "y":100}];
+  
+  const line= vl.markLine({stroke:'black',strokeDash:[4,4],strokeWidth:1.5}).data(values).encode(
+  vl.x().fieldQ("x"),
+  vl.y().fieldQ("y"),
+
+);
+
+  const plot= vl.markCircle()
+  .data(data) 
+  .transform(
+    vl.filter('datum.Continent != "All"')
+  )
+.encode(
+  vl.x().fieldQ('Talked to mental health professional').title('Talked to mental health professional'),
+  vl.y().fieldQ('Took prescribed medication').title('Took prescribed medication'),
+  vl.color().fieldN('Continent'),
+);
+
+  const base = plot.transform(vl.filter(vl.or('datum.Entity=="Belgium"', hoverOrClick)));
+  const halo={size:100,stoke:'firebrick', strokewidth:2};
+  const label={dx:4,dy:-8,align:'right'};
+  const white={stroke:'white',strokeWidth:2};
+  
+  return vl.layer(plot.params(hover),base.markPoint(halo), base.markText(label).encode(vl.text().fieldN('Entity')),line).render()
+ }
+return {staticPlot2};
+}});
+
+define({id: "53f8de7a", inputs: ["vl"], outputs: ["staticPlot3"], body: (vl) => {
+function staticPlot3(data,{width}={}){
+  const hover=vl.selectPoint().on('mouseover').toggle('false').nearest('false');
+  const hoverOrClick=vl.or(hover.empty(false));
+  const values= [{"x":0, "y":0}, {"x":20, "y":20},{"x":40, "y":40},{"x":60, "y":60}, {"x":80, "y":80}, {"x":100, "y":100}];
+  
+  const line= vl.markLine({stroke:'black',strokeDash:[4,4],strokeWidth:1.5}).data(values).encode(
+  vl.x().fieldQ("x"),
+  vl.y().fieldQ("y"),
+
+);
+
+  const plot= vl.markCircle()
+  .data(data) 
+  .transform(
+    vl.filter('datum.Continent != "All"')
+  )
+.encode(
+  vl.x().fieldQ('Engaged in religious/spiritual activities').title('Engaged in religious/spiritual activities'),
+   vl.y().fieldQ('Talked to mental health professional').title('Talked to mental health professional'),
+  vl.color().fieldN('Continent'),
+);
+
+  const base = plot.transform(vl.filter(vl.or('datum.Entity=="Belgium"', hoverOrClick)));
+  const halo={size:100,stoke:'firebrick', strokewidth:2};
+  const label={dx:4,dy:-8,align:'right'};
+  const white={stroke:'white',strokeWidth:2};
+  
+  return vl.layer(plot.params(hover),base.markPoint(halo), base.markText(label).encode(vl.text().fieldN('Entity')),line).render()
+ }
+return {staticPlot3};
+}});
+
+define({id: "f7439d7a", mode: "inline", inputs: ["resize","staticPlot1","countries","display"], body: async (resize,staticPlot1,countries,display) => {
+display(await(
+resize((width) => staticPlot1(countries, {width}))
+))
+}});
+
+define({id: "9a203940", mode: "inline", inputs: ["resize","staticPlot2","countries","display"], body: async (resize,staticPlot2,countries,display) => {
+display(await(
+resize((width) => staticPlot2(countries, {width}))
+))
+}});
+
+define({id: "f5f72851", mode: "inline", inputs: ["resize","staticPlot3","countries","display"], body: async (resize,staticPlot3,countries,display) => {
+display(await(
+resize((width) => staticPlot3(countries, {width}))
+))
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">Project Datavisualisatie</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link observablehq-link-active"><a href="./Comparison">Comparison</a></li>
+    <li class="observablehq-link"><a href="./example-dashboard">Example dashboard</a></li>
+    <li class="observablehq-link"><a href="./example-report">Example report</a></li>
+    <li class="observablehq-link"><a href="./Explore">Explore</a></li>
+    <li class="observablehq-link"><a href="./Men%20women">Eigen Plots</a></li>
+  </ol>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<pre><code>import {vl} from "@vega/vega-lite-api-v5";
+</code></pre>
+<h1 id="dynamic-plot" tabindex="-1"><a class="observablehq-header-anchor" href="#dynamic-plot">Dynamic Plot</a></h1>
+<p>Here is a dynamic bar chart, were you can plot any two solutions against each other.</p>
+<div class="observablehq observablehq--block"><!--:27dbdb90:--></div>
+<div class="observablehq observablehq--block"><!--:17f62330:--></div>
+<div class="observablehq observablehq--block"><!--:9731bceb:--></div>
+<div class="grid grid-cols-1">
+  <div class="card">
+    <observablehq-loading></observablehq-loading><!--:f5cabafe:-->
+  </div>
+</div>
+<h1 id="static-plots" tabindex="-1"><a class="observablehq-header-anchor" href="#static-plots">Static Plots</a></h1>
+<p>Here we show some interesting relations between 2 'solutions'. We see that in Europe the 'took prescribed medication' is
+higher than de religious however in Africa it is the opposite. This is easily seen from the plots as the countries in Europe all lie above the diagonal, and the countries in Africa all lie below.
+The same kind of relation exists between 'talked to a mental health professional'
+and 'engaged in religious activities'. For that reason we also plotted the relation between 'took prescribed medication' and 'talked to a mental health professional'.
+It can be seen from the plot that there is a definite connection between the two. The relation is not exaclty lineair, but it is relatively close.</p>
+<div class="observablehq observablehq--block"><!--:2cdab15b:--></div>
+<div class="observablehq observablehq--block"><!--:032dbd2c:--></div>
+<div class="observablehq observablehq--block"><!--:435b79d1:--></div>
+<div class="observablehq observablehq--block"><!--:e7c3a567:--></div>
+<div class="observablehq observablehq--block"><!--:53f8de7a:--></div>
+<div class="grid grid-cols-1">
+  <div class="card">
+    <observablehq-loading></observablehq-loading><!--:f7439d7a:-->
+  </div>
+ <div class="card">
+    <observablehq-loading></observablehq-loading><!--:9a203940:-->
+  </div>
+ <div class="card">
+    <observablehq-loading></observablehq-loading><!--:f5f72851:-->
+  </div>
+</div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./"><span>Project Datavisualisatie</span></a><a rel="next" href="./example-dashboard"><span>Example dashboard</span></a></nav>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2026-04-30T15:16:19">Apr 30, 2026</a>.</div>
+</footer>
+</div>
+</body>
+</html>

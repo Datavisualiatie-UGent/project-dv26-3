@@ -1,0 +1,1 @@
+import*as r from"../../_npm/vega@6.2.0/ba44c340.js";import*as a from"../../_npm/vega-lite@6.4.3/93808549.js";import*as o from"../../_npm/vega-lite-api@6.0.0/fb964333.js";var t=o.register(r,a);export{t as default};
