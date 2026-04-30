@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Eigen Plots | Project Datavisualisatie</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-air,near-midnight.b050d634.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,near-midnight.b050d634.css">
+<link rel="modulepreload" href="./_observablehq/client.46fbaf7a.js">
+<link rel="modulepreload" href="./_observablehq/runtime.607a8173.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.277aeab8.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/vega-lite.7a001ba6.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/9cffc2bd.js">
+<link rel="modulepreload" href="./_npm/vega-lite-api@6.0.0/fb964333.js">
+<link rel="modulepreload" href="./_npm/vega-lite@6.4.3/93808549.js">
+<link rel="modulepreload" href="./_npm/vega@6.2.0/ba44c340.js">
+<link rel="modulepreload" href="./_npm/vega-util@2.1.0/80ac7d14.js">
+<link rel="modulepreload" href="./_npm/vega-event-selector@4.0.0/1d939481.js">
+<link rel="modulepreload" href="./_npm/vega-expression@6.1.0/6c26820f.js">
+<link rel="modulepreload" href="./_npm/vega-dataflow@6.1.0/9ea261a7.js">
+<link rel="modulepreload" href="./_npm/vega-transforms@5.1.0/66f2ccc5.js">
+<link rel="modulepreload" href="./_npm/vega-view-transforms@5.1.0/25f0de03.js">
+<link rel="modulepreload" href="./_npm/vega-encode@5.1.0/8e97ef6f.js">
+<link rel="modulepreload" href="./_npm/vega-geo@5.1.0/660bd1bf.js">
+<link rel="modulepreload" href="./_npm/vega-force@5.1.0/896c5484.js">
+<link rel="modulepreload" href="./_npm/vega-hierarchy@5.1.0/206a50fb.js">
+<link rel="modulepreload" href="./_npm/vega-label@2.1.0/60c04238.js">
+<link rel="modulepreload" href="./_npm/vega-regression@2.1.0/4c5e082c.js">
+<link rel="modulepreload" href="./_npm/vega-voronoi@5.1.0/8ab8bdfa.js">
+<link rel="modulepreload" href="./_npm/vega-wordcloud@5.1.0/5ab9a9b7.js">
+<link rel="modulepreload" href="./_npm/vega-crossfilter@5.1.0/dbf32186.js">
+<link rel="modulepreload" href="./_npm/vega-statistics@2.0.0/ad9c9521.js">
+<link rel="modulepreload" href="./_npm/vega-time@3.1.0/bddd9130.js">
+<link rel="modulepreload" href="./_npm/vega-loader@5.1.0/e7368828.js">
+<link rel="modulepreload" href="./_npm/vega-scenegraph@5.1.0/ac74f9bb.js">
+<link rel="modulepreload" href="./_npm/vega-scale@8.1.0/ca7b6877.js">
+<link rel="modulepreload" href="./_npm/vega-projection@2.1.0/d1651e32.js">
+<link rel="modulepreload" href="./_npm/vega-view@6.1.0/b3f91751.js">
+<link rel="modulepreload" href="./_npm/vega-format@2.1.0/b5723669.js">
+<link rel="modulepreload" href="./_npm/vega-functions@6.1.1/6153a935.js">
+<link rel="modulepreload" href="./_npm/vega-parser@7.1.0/8bfef0c5.js">
+<link rel="modulepreload" href="./_npm/vega-runtime@7.1.0/3fc4e528.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/e93ca09f.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/8d1e5425.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/40599fb3.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/aeb57b94.js">
+<link rel="modulepreload" href="./_npm/vega-canvas@2.0.0/00b4c42d.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/5e804d15.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/e49e792c.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/87adea64.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/9f03c579.js">
+<link rel="modulepreload" href="./_npm/topojson-client@3.1.0/edd9ee95.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/6d3a6726.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/20d3f133.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/720b7f0a.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/ba24c2e7.js">
+<link rel="modulepreload" href="./_npm/d3-geo-projection@4.0.0/a9139ff5.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/b58a267d.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.2/3785bf2d.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/07c9626f.js">
+<link rel="modulepreload" href="./_npm/vega-selections@6.1.2/a1f1b6b2.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/e08981d9.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/0dfd751c.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/9ba9c7f3.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.1.0/d4ec0aa1.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.3/42820bfa.js">
+<link rel="icon" href="./_file/observable.1af93621.png" type="image/png" sizes="32x32">
+<script type="module">
+
+import {define} from "./_observablehq/client.46fbaf7a.js";
+import {registerFile} from "./_observablehq/stdlib.277aeab8.js";
+
+registerFile("./data/comfort_talked_about.csv", {"name":"./data/comfort_talked_about.csv","mimeType":"text/csv","path":"./_file/data/comfort_talked_about.d70ac0ca.csv","lastModified":1777294642361,"size":7624});
+registerFile("./data/men-women-friends-TRANFS.csv", {"name":"./data/men-women-friends-TRANFS.csv","mimeType":"text/csv","path":"./_file/data/men-women-friends-TRANFS.2fa461f4.csv","lastModified":1777294644945,"size":12587});
+registerFile("./data/perceived-comfort-speaking-anxiety-depression-vs-talked-to-family-friends-when-had-anxiety-depression.csv", {"name":"./data/perceived-comfort-speaking-anxiety-depression-vs-talked-to-family-friends-when-had-anxiety-depression.csv","mimeType":"text/csv","path":"./_file/data/perceived-comfort-speaking-anxiety-depression-vs-talked-to-family-friends-when-had-anxiety-depression.7aea0028.csv","lastModified":1777294648068,"size":6689});
+
+define({id: "4b6cff4a", inputs: ["FileAttachment","vl","display"], outputs: ["data","splitPlot"], body: async (FileAttachment,vl,display) => {
+const data = await FileAttachment("./data/men-women-friends-TRANFS.csv").csv();
+
+function splitPlot(data, {width = 700, heightTop = 150, heightBottom = 300} = {}){
+  const selectContinent = vl.selectPoint().fields('Entity');
+
+const backToBack = vl.markBar()
+  .data(data)
+  .transform(
+    // Filter op de continenten
+    vl.filter(
+      'datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania"'
+    ),
+
+    // Maak Male negatief zodat hij links komt
+    vl.calculate('datum.gender == "Male" ? -datum.Percentage : datum.Percentage')
+      .as('NegPercentage')
+  )
+  .params(selectContinent)
+  .encode(
+    vl.x()
+      .fieldQ("NegPercentage")
+      .title("Percentage")
+      .axis({ // toon positieve labels
+        format: "d",
+        labelExpr: "abs(datum.value)"
+      }),
+    vl.y().fieldN("Entity"),
+    vl.tooltip().fieldQ('Percentage'),
+    vl.color().fieldN('gender').scale({domain: ['Male', 'Female'], range: ['orange', 'purple']}),
+    vl.opacity().if(selectContinent, vl.value(0.9)).value(0.2),
+
+  );
+
+ const labelsMale = vl.markText({ align: "right", dx: -4 })
+   .data(data)
+  .transform(
+    vl.filter('datum.gender == "Male" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")' ),
+    vl.calculate('datum.gender == "Male" ? -datum.Percentage : datum.Percentage')
+      .as('NegPercentage')
+  )
+  .encode(
+    vl.x().fieldQ("NegPercentage"),
+    vl.y().fieldN("Entity"),
+    vl.text().fieldQ("Percentage").format(".1f"),
+    vl.color().value("orange")
+  );
+
+
+  const labelsFemale = vl.markText({ align: "left", dx:4 })
+    .data(data)
+  .transform(
+    vl.filter('datum.gender == "Female" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")' ),
+    vl.calculate('datum.gender == "Male" ? -datum.Percentage : datum.Percentage')
+      .as('NegPercentage')
+  )
+  .encode(
+    vl.x().fieldQ("Percentage"),
+    vl.y().fieldN("Entity"),
+    vl.text().fieldQ("Percentage").format(".1f"),
+    vl.color().value("purple")
+  );
+
+return vl.layer(backToBack,  labelsMale, labelsFemale).width(400).height(230).render();
+}
+
+display(await splitPlot(data, {width: 700}));
+
+return {data,splitPlot};
+}});
+
+define({id: "cf470b80", inputs: ["FileAttachment","vl","display"], outputs: ["data","slopePlot"], body: async (FileAttachment,vl,display) => {
+const data = await FileAttachment("./data/men-women-friends-TRANFS.csv").csv();
+
+function slopePlot(data, {width = 700, heightTop = 150, heightBottom = 300} = {}){
+  const selectedContinent = vl.selectPoint()
+  .fields("Continent");
+
+//continenten berekenen
+const continentenCalc = vl.calculate(
+  'datum["World region according to OWID"] == "NA" ? datum.Entity : datum["World region according to OWID"]'
+).as("Continent");
+
+//CONTINENTEN GRAPH
+const continentenSlope = vl.markLine({ strokeWidth: 4 })
+    .params(selectedContinent)
+    .transform(
+      vl.filter('datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania"'),
+      vl.calculate('datum.gender == "Male" ? 0 : 1').as("GenderX"), continentenCalc)
+    .encode(
+      vl.x().fieldQ("GenderX")
+      .scale({domain:[0, 1]}).title("Gender"),
+      vl.y().fieldQ("Percentage")
+          .title("Percentage")
+          .axis({titleX: -35}),
+      vl.color().fieldN("Continent")
+        .legend({orient: 'left'}),
+      vl.opacity().if(selectedContinent,  vl.value(0.9)).value(0.2)
+    );
+
+const labelsMale = vl.markText({ align: "right", dx: -5 })
+    .transform(
+      vl.filter(
+        '(datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania") && datum.gender == "Male"'
+      ),
+      vl.calculate('0').as("GenderX"), continentenCalc
+      )
+  .encode(
+    vl.x().fieldQ("GenderX"),
+    vl.y().fieldQ("Percentage"),
+    vl.text().fieldQ("Percentage").format(".1f"),
+    vl.color().fieldN("Continent").legend(null)
+  );
+
+const labelsFemale = vl.markText({ align: "left", dx: 5 })
+    .transform(
+      vl.filter(
+        '(datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania") && datum.gender == "Female"'
+      ),
+      vl.calculate('1').as("GenderX"), continentenCalc)
+  .encode(
+    vl.x().fieldQ("GenderX"),
+    vl.y().fieldQ("Percentage"),
+    vl.text().fieldQ("Percentage").format(".1f"),
+    vl.color().fieldN("Continent").legend(null)
+  );
+
+// LANDEN GRAPH
+const countriesSlope = vl.markLine({strokewidth : 1})
+    .params(selectedContinent)
+    .transform(
+      vl.filter('datum["World region according to OWID"] != "NA"'), // alleen landen
+      vl.calculate('datum.gender == "Male" ? 0 : 1').as('GenderX'), continentenCalc
+    )
+    .encode(
+      vl.x().fieldQ("GenderX").scale({ domain: [0, 1] }).title("Gender"),
+      vl.y().fieldQ("Percentage")
+        .title("Percentage")
+      // 'Percentage' titel meer doen verschuiven, x positie maar naar links
+        .axis({titleX: -35}),
+      // kleur op basis van verschil
+      vl.color().fieldN("Continent") .legend(null),
+      vl.detail().fieldN("Entity"),
+      vl.opacity().if(selectedContinent, vl.value(0.9)).value(0.05)
+    );
+
+const continentenChart = vl.layer(continentenSlope, labelsFemale, labelsMale)
+  .data(data)
+  .width(250)
+  .height(150);
+
+const countriesChart = countriesSlope
+  .data(data)
+  .width(450)
+  .height(300)
+   
+return vl.vconcat(continentenChart, countriesChart).render();
+}
+display(await slopePlot(data, {width: 700}));
+
+
+return {data,slopePlot};
+}});
+
+define({id: "b56a2fbc", inputs: ["FileAttachment","vl","display"], outputs: ["data","scatterPlot"], body: async (FileAttachment,vl,display) => {
+const data = await FileAttachment("./data/perceived-comfort-speaking-anxiety-depression-vs-talked-to-family-friends-when-had-anxiety-depression.csv").csv();
+   
+function scatterPlot(data, {width = 700, heightTop = 150, heightBottom = 300} = {}) {
+  const selectPunt = vl.selectPoint()
+  .fields("World region according to OWID");
+ 
+const hover = vl.selectPoint()
+  .on('mouseover')
+  .toggle(false)
+  .nearest(false);
+const click = vl.selectPoint();
+
+const hoverOrClick = vl.or(hover.empty(false));
+ 
+const scatterPlot = vl.markCircle({filled : true})
+  .data(data)
+  .transform(
+    vl.filter('datum.Entity != "Africa" && datum.Entity != "Europe" && datum.Entity != "Asia" && datum.Entity != "North America" && datum.Entity != "South America" && datum.Entity != "Oceania" && datum.Entity != "World" && datum.Entity !=  "High-income countries" && datum.Entity != "Low-income countries" && datum.Entity !=  "Lower-middle-income countries" && datum.Entity != "Upper-middle-income countries"')
+  )
+  .encode(
+    vl.y().fieldQ("Share who spoke to friends or family")
+    .title('Share who spoke to friends or family'),
+    vl.x().fieldQ("Share who said people would feel very comfortable speaking with someone they knew")
+    .title('Share who said people would feel very comfortable speaking with someone they knew'),
+    vl.color().fieldN("World region according to OWID"),
+    vl.opacity().if(selectPunt, vl.value(0.9)).value(0.2),
+    vl.tooltip(['Entity', 'Share who spoke to friends or family', 'Share who said people would feel very comfortable speaking with someone they knew']),
+  );
+
+  const dottedLine =   vl.markLine({stroke: "black", strokeDash: [4,4], strokeWidth: 2})
+    .data([
+      {"x": 0, "y": 0},
+      {"x": 100, "y": 100}
+    ])
+    .encode(
+      vl.x().fieldQ("x"),
+      vl.y().fieldQ("y")
+    );
+
+  const base = scatterPlot.transform(
+    vl.filter(hoverOrClick)
+  );
+
+    // mark properties for new layers
+  const halo = {size: 100, stroke: 'firebrick', strokeWidth: 1};
+  const label = {dx: 4, dy: -8, align: 'right'};
+  const white = {stroke: 'white', strokeWidth: 2};
+
+return vl.layer(
+    scatterPlot.params(hover, click,selectPunt),
+    base.markPoint(halo),
+    base.markText(label, white)
+    .encode(vl.text().fieldN('Entity')),
+    base.markText(label).encode(vl.text().fieldN('Entity'))
+    ,dottedLine)
+  .width(400)
+  .height(300)
+  .render()
+}
+display(await scatterPlot(data, {width: 700}));
+return {data,scatterPlot};
+}});
+
+define({id: "af97d23f", inputs: ["FileAttachment","vl","display"], outputs: ["data","connectedPlot"], body: async (FileAttachment,vl,display) => {
+const data = await FileAttachment("./data/comfort_talked_about.csv").csv();
+  // BASIS: dezelfde filtering + continentselectie
+
+function connectedPlot(data, {width = 700, heightTop = 150, heightBottom = 300 } = {}) {
+  const base = {
+    data: data,
+    transform: [
+      vl.filter(
+        'datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania"'
+      )
+    ]
+  };
+
+  //PLOT1
+  const comfortableTransform = [
+    ...base.transform,
+    vl.calculate('datum["Very comfortable"] + datum["Somewhat comfortable"]').as("Comfortable")
+  ];
+
+  const lineComfortable = vl
+    .markRule({ strokeWidth: 2, color: "grey" })
+    .data(base.data)
+    .transform(...comfortableTransform)
+    .encode(
+      vl.y().fieldN("Entity").sort("-Comfortable"),
+      vl.x().fieldQ("Comfortable"),
+      vl.x2().fieldQ("Talked to friends or family")
+    );
+
+  const comfortPoints = vl
+    .markPoint({ filled: true, size: 80 })
+    .data(base.data)
+    .transform(...comfortableTransform,
+       vl.calculate('"Comfortable"').as("Type") )
+    .encode(
+      vl.y().fieldN("Entity"),
+      vl.x().fieldQ("Comfortable"),
+      vl.color()
+      .fieldN("Type")
+      .scale({ domain: ["Comfortable", "Talked"], range:      ["orange", "purple"] })
+      .legend({ title: "Indicator" }),
+      vl.tooltip().fieldQ("Comfortable"),  
+      vl.order("descending").fieldQ("Comfortable")
+    );
+
+  const talkedPoints1 = vl
+    .markPoint({ filled: true, size: 80 })
+    .data(base.data)
+    .transform(...comfortableTransform,
+                 vl.calculate('"Talked"').as("Type"))
+    .encode(
+      vl.y().fieldN("Entity").sort("-Comfortable"),
+      vl.x().fieldQ("Talked to friends or family"),
+      vl.color()
+      .fieldN("Type")
+      .scale({ domain: ["Comfortable", "Talked"], range: ["orange", "purple"] })
+      .legend({ title: "Indicator" }),
+      vl.tooltip().fieldQ("Talked to friends or family"),
+    );
+
+  const chartComfortable = vl
+    .layer(lineComfortable, comfortPoints, talkedPoints1)
+    .width(250)
+    .height(150)
+    .title("Comfortable");
+
+// PLOT2
+  const notComfortableTransform = [
+    ...base.transform,
+    vl.calculate('datum["Not at all comfortable"]').as("NotComfortable")
+  ];
+
+  const lineNotComfortable = vl
+    .markRule({ strokeWidth: 2, color: "grey" })
+    .data(base.data)
+    .transform(...notComfortableTransform)
+    .encode(
+      vl.y().fieldN("Entity"),
+      vl.x().fieldQ("NotComfortable"),
+      vl.x2().fieldQ("Talked to friends or family")
+    );
+
+  const notComfortPoints = vl
+    .markPoint({ filled: true, color: 'orange', size: 80 })
+    .data(base.data)
+    .transform(...notComfortableTransform)
+    .encode(
+      vl.y().fieldN("Entity"),
+      vl.x().fieldQ("NotComfortable"),
+      vl.tooltip().fieldQ("NotComfortable"),
+      vl.order().fieldQ("NotComfortable")
+    );
+
+  const talkedPoints2 = vl
+    .markPoint({ filled: true, color: 'purple', size: 80 })
+    .data(base.data)
+    .transform(...notComfortableTransform)
+    .encode(
+      vl.y().fieldN("Entity"),
+      vl.x().fieldQ("Talked to friends or family"),
+      vl.tooltip().fieldQ("Talked to friends or family"),
+      vl.order().fieldQ("Talked to friends or family")
+    );
+
+  const chartNotComfortable = vl
+    .layer(lineNotComfortable, notComfortPoints, talkedPoints2)
+    .width(250)
+    .height(150)
+    .title("Not Comfortable");
+
+
+// gecombineerd
+  return vl
+    .hconcat(chartComfortable, chartNotComfortable)
+    .render();
+}
+display(await connectedPlot(data, {width: 700}));
+return {data,connectedPlot};
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">Project Datavisualisatie</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link"><a href="./Comparison">Comparison</a></li>
+    <li class="observablehq-link"><a href="./example-dashboard">Example dashboard</a></li>
+    <li class="observablehq-link"><a href="./example-report">Example report</a></li>
+    <li class="observablehq-link"><a href="./Explore">Explore</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./Men%20women">Eigen Plots</a></li>
+  </ol>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+</nav>
+</aside>
+<main id="observablehq-main" class="observablehq">
+<h1 id="eigen-plots" tabindex="-1"><a class="observablehq-header-anchor" href="#eigen-plots">Eigen Plots</a></h1>
+<p>BACK-TO-BACK BAR CHART</p>
+<ul>
+<li>labels in bar chart</li>
+</ul>
+<div class="observablehq observablehq--block"><!--:4b6cff4a:--></div>
+<p>SLOPE PLOT function, die dezelfde data weergeeft als de back-to-back bar chart alleen hopelijk meer gefocust op het verschil in gender</p>
+<div class="observablehq observablehq--block"><!--:cf470b80:--></div>
+<p>SCATTERPLOT die weergeeft per land hoe comfortabel mensen zich voelen om erover te praten ten opzichte van hoeveel procent werkelijk familie of vrienden kent met angsstoornis(sen) of depressie</p>
+<div class="observablehq observablehq--block"><!--:b56a2fbc:--></div>
+<p>CONNECTED DOT PLOT die weergeeft hoe comfortable local people zich voelen om over angsstoornissen en depressie te praten t.o.v. hoeveel procent erover heeft gepraat wanneer ze zelf lijden aan een angsstoornis of depressie</p>
+<div class="observablehq observablehq--block"><!--:af97d23f:--></div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./Explore"><span>Explore</span></a></nav>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2026-04-30T15:16:19">Apr 30, 2026</a>.</div>
+</footer>
+</div>
+</body>
+</html>
