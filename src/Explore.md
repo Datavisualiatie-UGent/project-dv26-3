@@ -3,6 +3,12 @@ title: Explore
 toc: false
 ---
 
+
+
+
+
+test
+
 On this page, we'll do some data exploration. 
 First, we show a world map colored according to our data. We visualize how many percent of people of each country said they used following approach when dealing with anxiety or depression. You can change the approach using the select item. The countries where we have no data of are colored grey.
 

@@ -9,6 +9,7 @@ import {vl} from "@vega/vega-lite-api-v5";
 # Dynamic Plot
 Here is a dynamic bar chart, were you can plot any two solutions against each other.
 
+
 ```js
 const questions= ['Engaged in religious/spiritual activities','Took prescribed medication','Improved healthy lifestyle behaviors','Made a change to work situation','Made a change to personal relationships','Talked to friends or family','Spent time in nature/the outdoors','Talked to mental health professional']
 ```
