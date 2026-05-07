@@ -1,191 +1,102 @@
 # Eigen Plots
 
 
+```js
+// imports
+import * as vl from "vega-lite-api";
+import embed from "vega-embed";
+import * as vega from "vega";
+import * as vegalite from "vega-lite";
 
-BACK-TO-BACK BAR CHART
-- labels in bar chart
+vl.register(vega, vegalite, embed);
+```
+
+De grafiek toont voor elk continent het percentage mannen en vrouwen dat aangeeft vrienden of familie te kennen die kampen met angst of depressie. In de meeste continenten ligt het percentage voor vrouwen hoger, wat erop wijst dat vrouwen vaker opmerken of melden dat er mentale‑gezondheidsproblemen voorkomen in hun sociale omgeving. In Afrika en Azië is het verschil tussne mannen en vrouwen klein, slechts 1% - 1,5%.
+
 ```js
 const data = await FileAttachment("data/men-women-friends-TRANFS.csv").csv();
 
-function splitPlot(data, {width = 700, heightTop = 150, heightBottom = 300} = {}){
+function overlappingBarChart(data, {width = 700, heightTop = 150, heightBottom = 300} = {}){
   const selectContinent = vl.selectPoint().fields('Entity');
 
-const backToBack = vl.markBar()
-  .data(data)
-  .transform(
-    // Filter op de continenten
-    vl.filter(
-      'datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania"'
-    ),
-
-    // Maak Male negatief zodat hij links komt
-    vl.calculate('datum.gender == "Male" ? -datum.Percentage : datum.Percentage')
-      .as('NegPercentage')
-  )
-  .params(selectContinent)
-  .encode(
-    vl.x()
-      .fieldQ("NegPercentage")
-      .title("Percentage")
-      .axis({ // toon positieve labels
-        format: "d",
-        labelExpr: "abs(datum.value)"
-      }),
-    vl.y().fieldN("Entity"),
-    vl.tooltip().fieldQ('Percentage'),
-    vl.color().fieldN('gender').scale({domain: ['Male', 'Female'], range: ['orange', 'purple']}),
-    vl.opacity().if(selectContinent, vl.value(0.9)).value(0.2),
-
-  );
-
- const labelsMale = vl.markText({ align: "right", dx: -4 })
-   .data(data)
-  .transform(
-    vl.filter('datum.gender == "Male" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")' ),
-    vl.calculate('datum.gender == "Male" ? -datum.Percentage : datum.Percentage')
-      .as('NegPercentage')
-  )
-  .encode(
-    vl.x().fieldQ("NegPercentage"),
-    vl.y().fieldN("Entity"),
-    vl.text().fieldQ("Percentage").format(".1f"),
-    vl.color().value("orange")
-  );
-
-
-  const labelsFemale = vl.markText({ align: "left", dx:4 })
-    .data(data)
-  .transform(
-    vl.filter('datum.gender == "Female" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")' ),
-    vl.calculate('datum.gender == "Male" ? -datum.Percentage : datum.Percentage')
-      .as('NegPercentage')
-  )
-  .encode(
-    vl.x().fieldQ("Percentage"),
-    vl.y().fieldN("Entity"),
-    vl.text().fieldQ("Percentage").format(".1f"),
-    vl.color().value("purple")
-  );
-
-return vl.layer(backToBack,  labelsMale, labelsFemale).width(400).height(230).render();
-}
-
-display(await splitPlot(data, {width: 700}));
-
-```
-SLOPE PLOT function, die dezelfde data weergeeft als de back-to-back bar chart alleen hopelijk meer gefocust op het verschil in gender
-```js
-const data = await FileAttachment("data/men-women-friends-TRANFS.csv").csv();
-
-function slopePlot(data, {width = 700, heightTop = 150, heightBottom = 300} = {}){
-  const selectedContinent = vl.selectPoint()
-  .fields("Continent");
-
-//continenten berekenen
-const continentenCalc = vl.calculate(
-  'datum["World region according to OWID"] == "NA" ? datum.Entity : datum["World region according to OWID"]'
-).as("Continent");
-
-//CONTINENTEN GRAPH
-const continentenSlope = vl.markLine({ strokeWidth: 4 })
-    .params(selectedContinent)
+  const maleBar = vl.markBar({ opacity: 0.7, size: 20 })
     .transform(
-      vl.filter('datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania"'),
-      vl.calculate('datum.gender == "Male" ? 0 : 1').as("GenderX"), continentenCalc)
-    .encode(
-      vl.x().fieldQ("GenderX")
-      .scale({domain:[0, 1]}).title("Gender"),
-      vl.y().fieldQ("Percentage")
-          .title("Percentage")
-          .axis({titleX: -35}),
-      vl.color().fieldN("Continent")
-        .legend({orient: 'left'}),
-      vl.opacity().if(selectedContinent,  vl.value(0.9)).value(0.2)
-    );
-
-const labelsMale = vl.markText({ align: "right", dx: -5 })
-    .transform(
-      vl.filter(
-        '(datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania") && datum.gender == "Male"'
-      ),
-      vl.calculate('0').as("GenderX"), continentenCalc
-      )
-  .encode(
-    vl.x().fieldQ("GenderX"),
-    vl.y().fieldQ("Percentage"),
-    vl.text().fieldQ("Percentage").format(".1f"),
-    vl.color().fieldN("Continent").legend(null)
-  );
-
-const labelsFemale = vl.markText({ align: "left", dx: 5 })
-    .transform(
-      vl.filter(
-        '(datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania") && datum.gender == "Female"'
-      ),
-      vl.calculate('1').as("GenderX"), continentenCalc)
-  .encode(
-    vl.x().fieldQ("GenderX"),
-    vl.y().fieldQ("Percentage"),
-    vl.text().fieldQ("Percentage").format(".1f"),
-    vl.color().fieldN("Continent").legend(null)
-  );
-
-// LANDEN GRAPH
-const countriesSlope = vl.markLine({strokewidth : 1})
-    .params(selectedContinent)
-    .transform(
-      vl.filter('datum["World region according to OWID"] != "NA"'), // alleen landen
-      vl.calculate('datum.gender == "Male" ? 0 : 1').as('GenderX'), continentenCalc
+      vl.filter('datum.gender == "Male" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")' )
     )
     .encode(
-      vl.x().fieldQ("GenderX").scale({ domain: [0, 1] }).title("Gender"),
-      vl.y().fieldQ("Percentage")
-        .title("Percentage")
-      // 'Percentage' titel meer doen verschuiven, x positie maar naar links
-        .axis({titleX: -35}),
-      // kleur op basis van verschil
-      vl.color().fieldN("Continent") .legend(null),
-      vl.detail().fieldN("Entity"),
-      vl.opacity().if(selectedContinent, vl.value(0.9)).value(0.05)
+      vl.x().fieldQ("Percentage"),
+      vl.y().fieldN("Entity").title(null),
+      vl.color().fieldN("gender")
+        .scale({ domain: ["Male", "Female"], range: ["orange", "purple"] }).title('Gender'),
+      vl.tooltip(["gender", "Percentage"])
     );
 
-const continentenChart = vl.layer(continentenSlope, labelsFemale, labelsMale)
-  .data(data)
-  .width(250)
-  .height(150);
+  const femaleBar = vl.markBar({ opacity: 0.7 , size : 30})
+    .transform(
+      vl.filter('datum.gender == "Female" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")' )
+    )
+    .encode(
+      vl.x().fieldQ("Percentage"),
+      vl.y().fieldN("Entity"),
+      vl.color().fieldN("gender")
+        .scale({ domain: ["Male", "Female"], range: ["orange", "purple"] }),
+      vl.tooltip(["gender", "Percentage"])
+    );
 
-const countriesChart = countriesSlope
-  .data(data)
-  .width(450)
-  .height(300)
-   
-return vl.vconcat(continentenChart, countriesChart).render();
+    // Label in male bar
+  const maleLabel = vl.markText({ align: "right", dx: -4, fill: "white", fontSize: 11 })
+    .transform(
+      vl.filter('datum.gender == "Male" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")')
+    )
+    .encode(
+      vl.x().fieldQ("Percentage"),
+      vl.y().fieldN("Entity"),
+      vl.text().fieldQ("Percentage").format(".1f")
+    );
+
+  // Label in female bar
+  const femaleLabel = vl.markText({ align: "left", dx: 4, fill: "white", fontSize: 11 })
+    .transform(
+      vl.filter('datum.gender == "Female" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")')
+    )
+    .encode(
+      vl.x().fieldQ("Percentage"),
+      vl.y().fieldN("Entity"),
+      vl.text().fieldQ("Percentage").format(".1f")
+    );
+
+  return vl.layer(femaleBar, maleBar)//, femaleLabel, maleLabel)
+    .data(data)
+    .width(400)
+    .height(230)
+    .render();
 }
-display(await slopePlot(data, {width: 700}));
+display(await overlappingBarChart(data, {width: 700}));
 
 
 ```
-SCATTERPLOT die weergeeft per land hoe comfortabel mensen zich voelen om erover te praten ten opzichte van hoeveel procent werkelijk familie of vrienden kent met angsstoornis(sen) of depressie
+De grafiek toont voor elk land de relatie tussen hoe comfortabel mensen zich voelen om met iemand te praten wanneer ze angstig of depressief zijn (x‑as) en hoe vaak ze dat in werkelijkheid doen (y‑as). Veel landen liggen onder de diagonaal, wat erop wijst dat mensen zich wel comfortabel voelen, maar in de praktijk minder vaak het gesprek aangaan. De interactieve functies maken het mogelijk om individuele landen en regio’s duidelijk te vergelijken.
 
 ```js
 const data = await FileAttachment("data/perceived-comfort-speaking-anxiety-depression-vs-talked-to-family-friends-when-had-anxiety-depression.csv").csv();
    
-function scatterPlot(data, {width = 700, heightTop = 150, heightBottom = 300} = {}) {
+function scatterPlot(data, {width = 700, heightTop = 150, heightBottom = 300} = {}) 
+ {   
   const selectPunt = vl.selectPoint()
-  .fields("World region according to OWID");
- 
-const hover = vl.selectPoint()
-  .on('mouseover')
-  .toggle(false)
-  .nearest(false);
-const click = vl.selectPoint();
+    .fields("World region according to OWID");
+  
+  const hover = vl.selectPoint()
+    .on('mouseover')
+    .toggle(false)
+    .nearest(false);
+  const click = vl.selectPoint();
 
-const hoverOrClick = vl.or(hover.empty(false));
- 
-const scatterPlot = vl.markCircle({filled : true})
+  const hoverOrClick = vl.or(hover.empty(false));
+  
+  const scatterPlot = vl.markCircle({filled : true})
   .data(data)
   .transform(
-    vl.filter('datum.Entity != "Africa" && datum.Entity != "Europe" && datum.Entity != "Asia" && datum.Entity != "North America" && datum.Entity != "South America" && datum.Entity != "Oceania" && datum.Entity != "World" && datum.Entity !=  "High-income countries" && datum.Entity != "Low-income countries" && datum.Entity !=  "Lower-middle-income countries" && datum.Entity != "Upper-middle-income countries"')
+    vl.filter('datum.Entity != "Africa" && datum.Entity != "Europe" && datum.Entity != "Asia" && datum.Entity != "North America" && datum.Entity != "South America" && datum.Entity != "Oceania" && datum.Entity != "World" && datum.Entity !=  "High-income countries" && datum.Entity != "Low-income countries" && datum.Entity !=  "Lower-middle-income countries" && datum.Entity != "Upper-middle-income countries" && datum.Entity != "Japan" && datum.Entity != "Lithuania" && datum.Entity != "Taiwan" && datum.Entity != "Israel" && datum.Entity != "Namibia" && datum.Entity != "Cambodia" && datum.Entity != "Montenegro" && datum.Entity != "Slovenia" && datum.Entity != "Serbia" && datum.Entity != "Algeria"' )
   )
   .encode(
     vl.y().fieldQ("Share who spoke to friends or family")
@@ -208,7 +119,7 @@ const scatterPlot = vl.markCircle({filled : true})
     );
 
   const base = scatterPlot.transform(
-    vl.filter(hoverOrClick)
+    vl.filter(vl.or('datum.Entity=="Belgium"', hoverOrClick))
   );
 
     // mark properties for new layers
@@ -216,7 +127,7 @@ const scatterPlot = vl.markCircle({filled : true})
   const label = {dx: 4, dy: -8, align: 'right'};
   const white = {stroke: 'white', strokeWidth: 2};
 
-return vl.layer(
+  return vl.layer(
     scatterPlot.params(hover, click,selectPunt),
     base.markPoint(halo),
     base.markText(label, white)
@@ -229,124 +140,71 @@ return vl.layer(
 }
 display(await scatterPlot(data, {width: 700}));
 ```
-CONNECTED DOT PLOT die weergeeft hoe comfortable local people zich voelen om over angsstoornissen en depressie te praten t.o.v. hoeveel procent erover heeft gepraat wanneer ze zelf lijden aan een angsstoornis of depressie
+
+De grafiek toont voor elk land de relatie tussen hoe comfortabel mensen denken dat anderen zich voelen om te praten over angst of depressie (x‑as) en hoeveel mensen iemand kennen met angst of depressie (y‑as). In veel landen ligt de kennis van mentale‑gezondheidsproblemen hoger dan de verwachte openheid om erover te praten. We zien onder de diagonale referentielijn enkel landen uit Azië en Afrika.
 
 ```js
-const data = await FileAttachment("data/comfort_talked_about.csv").csv();
+const data = await FileAttachment("data/comfort-speaking-vs-knowing-friends-family-with-anxiety-depression.csv").csv();
+
   // BASIS: dezelfde filtering + continentselectie
 
-function connectedPlot(data, {width = 700, heightTop = 150, heightBottom = 300 } = {}) {
-  const base = {
-    data: data,
-    transform: [
-      vl.filter(
-        'datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania"'
-      )
-    ]
-  };
+function connectedPlot(data, {width = 700, heightTop = 150, heightBottom = 300 } = {})
+{   
+  const selectPunt = vl.selectPoint()
+    .fields("World region according to OWID");
+  
+  const hover = vl.selectPoint()
+    .on('mouseover')
+    .toggle(false)
+    .nearest(false);
+  const click = vl.selectPoint();
 
-  //PLOT1
-  const comfortableTransform = [
-    ...base.transform,
-    vl.calculate('datum["Very comfortable"] + datum["Somewhat comfortable"]').as("Comfortable")
-  ];
+  const hoverOrClick = vl.or(hover.empty(false));
+  
+  const scatterPlot = vl.markCircle({filled : true})
+  .data(data)
+  .transform(
+    vl.filter('datum.Entity != "Africa" && datum.Entity != "Europe" && datum.Entity != "Asia" && datum.Entity != "North America" && datum.Entity != "South America" && datum.Entity != "Oceania" && datum.Entity != "World" && datum.Entity !=  "High-income countries" && datum.Entity != "Low-income countries" && datum.Entity !=  "Lower-middle-income countries" && datum.Entity != "Upper-middle-income countries"')
+  )
+  .encode(
+    vl.y().fieldQ("Know friends or family with anxiety or depression")
+    .title("Know friends or family with anxiety or depression"),
+    vl.x().fieldQ("Someone local would feel very comfortable speaking about anxiety or depression")
+    .title("Someone local would feel very comfortable speaking about anxiety or depression"),
+    vl.color().fieldN("World region according to OWID"),
+    vl.opacity().if(selectPunt, vl.value(0.9)).value(0.2),
+    vl.tooltip(['Entity', 'Share who spoke to friends or family', 'Share who said people would feel very comfortable speaking with someone they knew']),
+  );
 
-  const lineComfortable = vl
-    .markRule({ strokeWidth: 2, color: "grey" })
-    .data(base.data)
-    .transform(...comfortableTransform)
+  const dottedLine =   vl.markLine({stroke: "black", strokeDash: [4,4], strokeWidth: 2})
+    .data([
+      {"x": 0, "y": 0},
+      {"x": 100, "y": 100}
+    ])
     .encode(
-      vl.y().fieldN("Entity").sort("-Comfortable"),
-      vl.x().fieldQ("Comfortable"),
-      vl.x2().fieldQ("Talked to friends or family")
+      vl.x().fieldQ("x"),
+      vl.y().fieldQ("y")
     );
 
-  const comfortPoints = vl
-    .markPoint({ filled: true, size: 80 })
-    .data(base.data)
-    .transform(...comfortableTransform,
-       vl.calculate('"Comfortable"').as("Type") )
-    .encode(
-      vl.y().fieldN("Entity"),
-      vl.x().fieldQ("Comfortable"),
-      vl.color()
-      .fieldN("Type")
-      .scale({ domain: ["Comfortable", "Talked"], range:      ["orange", "purple"] })
-      .legend({ title: "Indicator" }),
-      vl.tooltip().fieldQ("Comfortable"),  
-      vl.order("descending").fieldQ("Comfortable")
-    );
+  const base = scatterPlot.transform(
+    vl.filter(vl.or('datum.Entity=="Belgium"', hoverOrClick))
+  );
 
-  const talkedPoints1 = vl
-    .markPoint({ filled: true, size: 80 })
-    .data(base.data)
-    .transform(...comfortableTransform,
-                 vl.calculate('"Talked"').as("Type"))
-    .encode(
-      vl.y().fieldN("Entity").sort("-Comfortable"),
-      vl.x().fieldQ("Talked to friends or family"),
-      vl.color()
-      .fieldN("Type")
-      .scale({ domain: ["Comfortable", "Talked"], range: ["orange", "purple"] })
-      .legend({ title: "Indicator" }),
-      vl.tooltip().fieldQ("Talked to friends or family"),
-    );
+    // mark properties for new layers
+  const halo = {size: 100, stroke: 'firebrick', strokeWidth: 1};
+  const label = {dx: 4, dy: -8, align: 'right'};
+  const white = {stroke: 'white', strokeWidth: 2};
 
-  const chartComfortable = vl
-    .layer(lineComfortable, comfortPoints, talkedPoints1)
-    .width(250)
-    .height(150)
-    .title("Comfortable");
-
-// PLOT2
-  const notComfortableTransform = [
-    ...base.transform,
-    vl.calculate('datum["Not at all comfortable"]').as("NotComfortable")
-  ];
-
-  const lineNotComfortable = vl
-    .markRule({ strokeWidth: 2, color: "grey" })
-    .data(base.data)
-    .transform(...notComfortableTransform)
-    .encode(
-      vl.y().fieldN("Entity"),
-      vl.x().fieldQ("NotComfortable"),
-      vl.x2().fieldQ("Talked to friends or family")
-    );
-
-  const notComfortPoints = vl
-    .markPoint({ filled: true, color: 'orange', size: 80 })
-    .data(base.data)
-    .transform(...notComfortableTransform)
-    .encode(
-      vl.y().fieldN("Entity"),
-      vl.x().fieldQ("NotComfortable"),
-      vl.tooltip().fieldQ("NotComfortable"),
-      vl.order().fieldQ("NotComfortable")
-    );
-
-  const talkedPoints2 = vl
-    .markPoint({ filled: true, color: 'purple', size: 80 })
-    .data(base.data)
-    .transform(...notComfortableTransform)
-    .encode(
-      vl.y().fieldN("Entity"),
-      vl.x().fieldQ("Talked to friends or family"),
-      vl.tooltip().fieldQ("Talked to friends or family"),
-      vl.order().fieldQ("Talked to friends or family")
-    );
-
-  const chartNotComfortable = vl
-    .layer(lineNotComfortable, notComfortPoints, talkedPoints2)
-    .width(250)
-    .height(150)
-    .title("Not Comfortable");
-
-
-// gecombineerd
-  return vl
-    .hconcat(chartComfortable, chartNotComfortable)
-    .render();
+  return vl.layer(
+    scatterPlot.params(hover, click,selectPunt),
+    base.markPoint(halo),
+    base.markText(label, white)
+    .encode(vl.text().fieldN('Entity')),
+    base.markText(label).encode(vl.text().fieldN('Entity'))
+    ,dottedLine)
+  .width(400)
+  .height(300)
+  .render()
 }
 display(await connectedPlot(data, {width: 700}));
 ```
