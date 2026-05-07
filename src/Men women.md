@@ -1,8 +1,6 @@
 # Social Factors
 
-
-De grafiek toont voor elk continent het percentage mannen en vrouwen dat aangeeft vrienden of familie te kennen die kampen met angst of depressie. In de meeste continenten ligt het percentage voor vrouwen hoger, wat erop wijst dat vrouwen vaker opmerken of melden dat er mentale‑gezondheidsproblemen voorkomen in hun sociale omgeving. In Afrika en Azië is het verschil tussne mannen en vrouwen klein, slechts 1% - 1,5%.
-
+The chart shows, for each continent, the percentage of men and women who report knowing friends or family members who struggle with anxiety or depression. In most continents, the percentage is higher for women, suggesting that women more often notice or report the presence of mental‑health issues within their social environment. In Africa and Asia, the difference between men and women is small, only about 1% to 1.5%.
 
 ```js
 const data = await FileAttachment("data/men-women-friends-TRANFS.csv").csv();
@@ -10,53 +8,40 @@ const data = await FileAttachment("data/men-women-friends-TRANFS.csv").csv();
 function overlappingBarChart(data, {width = 700, heightTop = 150, heightBottom = 300} = {}){
   const selectContinent = vl.selectPoint().fields('Entity');
 
-  const maleBar = vl.markBar({ opacity: 0.7, size: 20 })
+   const maleBar = vl.markBar({ opacity: 0.7, size: 20 })
     .transform(
-      vl.filter('datum.gender == "Male" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")' )
+      vl.filter('datum.gender == "Male" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")' ), 
+      vl.calculate('format(datum.Percentage, ".1f") + "%"').as("PercentageLabel")
     )
     .encode(
       vl.x().fieldQ("Percentage"),
       vl.y().fieldN("Entity").title(null),
       vl.color().fieldN("gender")
         .scale({ domain: ["Male", "Female"], range: ["orange", "purple"] }).title('Gender'),
-      vl.tooltip(["gender", "Percentage"])
-    );
+      vl.tooltip([
+        { field: "gender", type: "nominal", title: "Gender" },
+        { field: "PercentageLabel", type: "nominal", title: "Percentage"}
+      ])    );
 
+ 
   const femaleBar = vl.markBar({ opacity: 0.7 , size : 30})
     .transform(
-      vl.filter('datum.gender == "Female" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")' )
+      vl.filter('datum.gender == "Female" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")' ), 
+      vl.calculate('format(datum.Percentage, ".1f") + "%"').as("PercentageLabel")
     )
     .encode(
-      vl.x().fieldQ("Percentage"),
+      vl.x().fieldQ("Percentage").title("Share who know friends or family who have been anxious or depressed"),
       vl.y().fieldN("Entity"),
       vl.color().fieldN("gender")
         .scale({ domain: ["Male", "Female"], range: ["orange", "purple"] }),
-      vl.tooltip(["gender", "Percentage"])
+      vl.tooltip([
+        { field: "gender", type: "nominal", title: "Gender" },
+        { field: "PercentageLabel", type: "nominal", title: "Percentage" }
+      ]) 
     );
 
-    // Label in male bar
-  const maleLabel = vl.markText({ align: "right", dx: -4, fill: "white", fontSize: 11 })
-    .transform(
-      vl.filter('datum.gender == "Male" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")')
-    )
-    .encode(
-      vl.x().fieldQ("Percentage"),
-      vl.y().fieldN("Entity"),
-      vl.text().fieldQ("Percentage").format(".1f")
-    );
 
-  // Label in female bar
-  const femaleLabel = vl.markText({ align: "left", dx: 4, fill: "white", fontSize: 11 })
-    .transform(
-      vl.filter('datum.gender == "Female" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")')
-    )
-    .encode(
-      vl.x().fieldQ("Percentage"),
-      vl.y().fieldN("Entity"),
-      vl.text().fieldQ("Percentage").format(".1f")
-    );
-
-  return vl.layer(femaleBar, maleBar)//, femaleLabel, maleLabel)
+  return vl.layer(femaleBar, maleBar)
     .data(data)
     .width(400)
     .height(230)
@@ -66,7 +51,7 @@ display(await overlappingBarChart(data, {width: 700}));
 
 
 ```
-De grafiek toont voor elk land de relatie tussen hoe comfortabel mensen zich voelen om met iemand te praten wanneer ze angstig of depressief zijn (x‑as) en hoe vaak ze dat in werkelijkheid doen (y‑as). Veel landen liggen boven de diagonaal, wat erop wijst dat mensen in de praktijk wel het gesprek aangaan, hoewel er minder aangeven zich comfortabel te voelen om erover te praten. De interactieve functies maken het mogelijk om individuele landen en regio’s duidelijk te vergelijken.
+The chart shows, for each country, the relationship between how comfortable people feel talking to someone when they are anxious or depressed (x‑axis) and how often they actually do so in practice (y‑axis). Many countries lie above the diagonal, indicating that people do initiate these conversations even though fewer report feeling comfortable discussing such issues. The interactive features make it possible to clearly compare individual countries and regions.
 
 ```js
 const data = await FileAttachment("data/comfort_talked_about(3).csv").csv();
@@ -129,5 +114,3 @@ return vl.layer(
 }
 display(await scatterPlot(data, {width: 700}));
 ```
-
-```js
