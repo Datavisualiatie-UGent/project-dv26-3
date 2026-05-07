@@ -3,11 +3,11 @@ theme: dashboard
 title: Comparison
 toc: false
 ---
-``` js
-import {vl} from "@vega/vega-lite-api-v5";
-```
+
 # Dynamic Plot
-Here is a dynamic bar chart, were you can plot any two solutions against each other.
+In the following dynamic bar chart we compare the possible solutions against each other.
+By choosing 2 solutions in the menu bar, the mean number of people per continent who dealth with anxiety and/or depression
+and used that solution are portrayed. By looking at different combinantions you can discover relations.
 
 
 ```js
@@ -33,18 +33,19 @@ return vl.markBar().data(data)
       .as('Category', 'Percentage')
   )
   .encode(
-    vl.x().fieldN('Continent'),
-    vl.y().average('Percentage').title('Mean Percentage'),
+    vl.y().fieldN('Continent').title(null),
+    vl.x().average('Percentage').title('Mean Percentage'),
     // 3. Use the new 'Category' field for grouping and color
-    vl.xOffset().fieldN('Category'),
-    vl.color().fieldN('Category')
+    vl.yOffset().fieldN('Category'),
+    vl.color().fieldN('Category').title('World region accrording to OWID')
     .legend({
       labelExpr: "datum.label == 'dynamicQ1' ? Question1 : Question2",
       labelFontSize:'11',
-      labelLimit:'200'
+      labelLimit:'250'
     })
   )
   .render()
+  //.scale({ range:["orange", "purple"] }).
  }
 ```
 <div class="grid grid-cols-1">
@@ -54,53 +55,40 @@ return vl.markBar().data(data)
 </div>
 
 # Static Plots
-Here we show some interesting relations between 2 'solutions'. We see that in Europe the 'took prescribed medication' is
-higher than de religious however in Africa it is the opposite. This is easily seen from the plots as the countries in Europe all lie above the diagonal, and the countries in Africa all lie below.
-The same kind of relation exists between 'talked to a mental health professional' 
-and 'engaged in religious activities'. For that reason we also plotted the relation between 'took prescribed medication' and 'talked to a mental health professional'.
-It can be seen from the plot that there is a definite connection between the two. The relation is not exaclty lineair, but it is relatively close.
+Below, some interesrting relations between 2 solutions are displayed using scatterplots.
+When you click on a dot, all points from that continent will light up, so you can easily compare within the continents.
+
+The first plot shows the mean number of people who engaged in spiritiual/religious activites
+versus the mean number of people who took prescibed medication. This plot clearly shows that taking prescibed medication
+is a more common practice than engaging in religious activities in Europe and in Oceania. In Africa however it's the opposite.
+In Asia and North-and South-America there does not seem to be a real relation.
 
 ```js
 const countries = FileAttachment("./data/Countries_Comparison@1.csv").csv();
 ```
 
 ```js
-function staticPlot(data, {width} = {}) {
- return vl.markCircle()
-  .data(data) 
-  .transform(
-    vl.filter('datum.Continent != "All"')
-  )
-.encode(
-  vl.x().fieldQ('Engaged in religious/spiritual activities'),
-  vl.y().fieldQ('Took prescribed medication'),
-  vl.color().fieldN('Continent'),
-  vl.tooltip(['Entity'])
-).title('Static plot').render()
-};
-//display( await staticPlot(countries));
-```
-
-```js
 function staticPlot1(data,{width}={}){
   const hover=vl.selectPoint().on('mouseover').toggle('false').nearest('false');
   const hoverOrClick=vl.or(hover.empty(false));
+  const selectPunt=vl.selectPoint().fields('Continent');
   const values= [{"x":0, "y":0}, {"x":20, "y":20},{"x":40, "y":40},{"x":60, "y":60}, {"x":80, "y":80}, {"x":100, "y":100}];
-  const line= vl.markLine({stroke:'black',strokeDash:[4,4],strokeWidth:1.5}).data(values).encode(
+  
+  const line= vl.markLine({stroke:'grey',strokeDash:[4,4],strokeWidth:1.5}).data(values).encode(
   vl.x().fieldQ("x"),
   vl.y().fieldQ("y"),
-
 );
 
   const plot= vl.markCircle()
-  .data(data) 
+  .data(countries) 
   .transform(
     vl.filter('datum.Continent != "All"')
   )
 .encode(
-  vl.x().fieldQ('Engaged in religious/spiritual activities').title('Engaged in religious/spiritual activities'),
-  vl.y().fieldQ('Took prescribed medication').title('Took prescribed medication'),
-  vl.color().fieldN('Continent')
+  vl.x().fieldQ('Engaged in religious/spiritual activities').title('Mean percentage of people who engaged in religious/spiritual activities'),
+  vl.y().fieldQ('Took prescribed medication').title('Mean percentage of people who took prescribed medication'),
+  vl.color().fieldN('Continent').title('World region according to OWID'),
+   vl.opacity().if(selectPunt, vl.value(0.9)).value(0.2),
 );
 
   const base = plot.transform(vl.filter(vl.or('datum.Entity=="Belgium"', hoverOrClick)));
@@ -108,62 +96,79 @@ function staticPlot1(data,{width}={}){
   const label={dx:4,dy:-8,align:'right'};
   const white={stroke:'white',strokeWidth:2};
   
-  return vl.layer(plot.params(hover),base.markPoint(halo), base.markText(label).encode(vl.text().fieldN('Entity')),line).render()
+   return vl.layer(
+    plot.params(hover,selectPunt),
+    base.markPoint(halo),
+    base.markText(label, white)
+    .encode(vl.text().fieldN('Entity')),
+    base.markText(label).encode(vl.text().fieldN('Entity'))
+    ,line).width(400)
+  .height(300).render()
 };
-//display( await staticPlot1(countries));
+
 ```
 ```js
 function staticPlot2(data,{width}={}){
   const hover=vl.selectPoint().on('mouseover').toggle('false').nearest('false');
   const hoverOrClick=vl.or(hover.empty(false));
-  const values= [{"x":0, "y":0}, {"x":20, "y":20},{"x":40, "y":40},{"x":60, "y":60}, {"x":80, "y":80}, {"x":100, "y":100}];
-  
-  const line= vl.markLine({stroke:'black',strokeDash:[4,4],strokeWidth:1.5}).data(values).encode(
+  const selectPunt=vl.selectPoint().fields('Continent');
+ const values= [{"x":0, "y":0}, {"x":20, "y":20},{"x":40, "y":40},{"x":60, "y":60}, {"x":80, "y":80}, {"x":100, "y":100}];
+ 
+  const line= vl.markLine({stroke:'grey',strokeDash:[4,4],strokeWidth:1.5}).data(values).encode(
   vl.x().fieldQ("x"),
-  vl.y().fieldQ("y"),
+  vl.y().fieldQ("y")
 
 );
 
   const plot= vl.markCircle()
-  .data(data) 
+  .data(countries) 
   .transform(
     vl.filter('datum.Continent != "All"')
   )
 .encode(
-  vl.x().fieldQ('Talked to mental health professional').title('Talked to mental health professional'),
-  vl.y().fieldQ('Took prescribed medication').title('Took prescribed medication'),
-  vl.color().fieldN('Continent'),
+  vl.x().fieldQ('Engaged in religious/spiritual activities').title('Mean percentage of people who engaged in religious/spiritual activities'),
+  vl.y().fieldQ('Talked to mental health professional').title('Mean percentage of people who talked to mental health professional'),
+  vl.color().fieldN('Continent').title('World region according to OWID'),
+  vl.opacity().if(selectPunt, vl.value(0.9)).value(0.2),
 );
-
   const base = plot.transform(vl.filter(vl.or('datum.Entity=="Belgium"', hoverOrClick)));
-  const halo={size:100,stoke:'firebrick', strokewidth:2};
+  const halo={size:100,stoke:'firebrick', strokeWidth:2};
   const label={dx:4,dy:-8,align:'right'};
   const white={stroke:'white',strokeWidth:2};
   
-  return vl.layer(plot.params(hover),base.markPoint(halo), base.markText(label).encode(vl.text().fieldN('Entity')),line).render()
- }
+ return vl.layer(
+    plot.params(hover,selectPunt),
+    base.markPoint(halo),
+    base.markText(label, white)
+    .encode(vl.text().fieldN('Entity')),
+    base.markText(label).encode(vl.text().fieldN('Entity'))
+    ,line).width(400)
+  .height(300).render()
+}
 ```
 ```js
 function staticPlot3(data,{width}={}){
   const hover=vl.selectPoint().on('mouseover').toggle('false').nearest('false');
   const hoverOrClick=vl.or(hover.empty(false));
-  const values= [{"x":0, "y":0}, {"x":20, "y":20},{"x":40, "y":40},{"x":60, "y":60}, {"x":80, "y":80}, {"x":100, "y":100}];
+  const selectPunt=vl.selectPoint().fields('Continent');
+   const values= [{"x":0, "y":0}, {"x":20, "y":20},{"x":40, "y":40},{"x":60, "y":60}, {"x":80, "y":80}, {"x":100, "y":100}];
   
-  const line= vl.markLine({stroke:'black',strokeDash:[4,4],strokeWidth:1.5}).data(values).encode(
+  const line= vl.markLine({stroke:'grey',strokeDash:[4,4],strokeWidth:1.5}).data(values).encode(
   vl.x().fieldQ("x"),
   vl.y().fieldQ("y"),
 
 );
 
   const plot= vl.markCircle()
-  .data(data) 
+  .data(countries) 
   .transform(
     vl.filter('datum.Continent != "All"')
   )
 .encode(
-  vl.x().fieldQ('Engaged in religious/spiritual activities').title('Engaged in religious/spiritual activities'),
-   vl.y().fieldQ('Talked to mental health professional').title('Talked to mental health professional'),
-  vl.color().fieldN('Continent'),
+  vl.x().fieldQ('Talked to mental health professional').title('Mean percentage of people who talked to mental health professional'),
+  vl.y().fieldQ('Took prescribed medication').title('Mean percentage of people who took prescribed medication'),
+  vl.color().fieldN('Continent').title('World region according to OWID'),
+   vl.opacity().if(selectPunt, vl.value(0.9)).value(0.2),
 );
 
   const base = plot.transform(vl.filter(vl.or('datum.Entity=="Belgium"', hoverOrClick)));
@@ -171,17 +176,42 @@ function staticPlot3(data,{width}={}){
   const label={dx:4,dy:-8,align:'right'};
   const white={stroke:'white',strokeWidth:2};
   
-  return vl.layer(plot.params(hover),base.markPoint(halo), base.markText(label).encode(vl.text().fieldN('Entity')),line).render()
- }
+  return vl.layer(
+    plot.params(hover,selectPunt),
+    base.markPoint(halo),
+    base.markText(label, white)
+    .encode(vl.text().fieldN('Entity')),
+    base.markText(label).encode(vl.text().fieldN('Entity'))
+    ,line).width(400)
+  .height(300).render()
+}
 ```
 <div class="grid grid-cols-1">
   <div class="card">
     ${resize((width) => staticPlot1(countries, {width}))}
   </div>
- <div class="card">
+</div>
+The second plot displays the mean number of people who engaged in spiritiual/religious activities
+versus the mean number of people who talked to a mental health professional. 
+Once again the countries in Africa clearly lie below the diagonal. Europe is now a bit more scattered. 
+When looking at the European countries in particular, we see that the 'Western' countries mostly lie in the upper left corner.
+Ireland is a real 'outlier' however. 
+
+<div class="grid grid-cols-1">
+  <div class="card">
     ${resize((width) => staticPlot2(countries, {width}))}
   </div>
- <div class="card">
+</div>
+
+Since previous plots showed quite similar results, we also plotted the mean number of people who took prescribed medication
+versus the mean number of people who talked to a mental health professional.
+Here most points lie around the diagonal, which we expected as taking medication implies you talked to a doctor.
+<div class="grid grid-cols-1">
+  <div class="card">
     ${resize((width) => staticPlot3(countries, {width}))}
   </div>
 </div>
+
+
+
+
