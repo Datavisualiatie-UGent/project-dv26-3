@@ -2,7 +2,6 @@
 title: Example dashboard
 toc: false
 ---
-Hey!
 
 <!-- titel en subtitel -->
 
@@ -415,7 +414,7 @@ display(chart_zoom(countries, countrymesh, valuemap, approach_description,countr
 .navbar {
   position: sticky;
   top: 0;
-  width: 100%;
+  width: 80%;
   background: white;
   border-bottom: 1px solid #e5e7eb;
   z-index: 1000;
