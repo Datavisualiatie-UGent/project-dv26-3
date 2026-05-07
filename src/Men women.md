@@ -114,3 +114,81 @@ return vl.layer(
 }
 display(await scatterPlot(data, {width: 700}));
 ```
+CONNECTED DOT PLOT die weergeeft hoe comfortable local people zich voelen om over angsstoornissen en depressie te praten t.o.v. hoeveel procent erover heeft gepraat wanneer ze zelf lijden aan een angsstoornis of depressie
+
+```js
+// BASIS: dezelfde filtering + continentselectie
+
+function connectedPlot(data, {width = 700, heightTop = 150, heightBottom = 300 } = {}) {
+  const base = {
+    data: data,
+    transform: [
+      vl.filter(
+        'datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania"'
+      )
+    ]
+  };
+
+  //PLOT1
+  const comfortableTransform = [
+    ...base.transform,
+      vl.calculate('+(datum["Very comfortable"]) + +(datum["Somewhat comfortable"])').as('Comfortable')
+  ];
+
+  const lineComfortable = vl
+    .markRule({ strokeWidth: 2, color: "grey" })
+    .data(base.data)
+    .transform(...comfortableTransform)
+    .encode(
+      vl.y().fieldN("Entity").sort("-Comfortable").title(""),
+      vl.x().fieldQ("Comfortable").title('Mean percentage'),
+      vl.x2().fieldQ("Talked to friends or family")
+    );
+
+  const comfortPoints = vl
+    .markPoint({ filled: true, size: 80 })
+    .data(base.data)
+    .transform(...comfortableTransform,
+       vl.calculate('"Comfortable"').as("Type") )
+    .encode(
+      vl.y().fieldN("Entity"),
+      vl.x().fieldQ("Comfortable"),
+      vl.color()
+      .fieldN("Type")
+     // .scale({ domain: ["Comfortable", "Talked"], range:      ["orange", "purple"] })
+      .legend({ title: "Indicator" }),
+      vl.tooltip().fieldQ("Comfortable"),  
+      vl.order("descending").fieldQ("Comfortable")
+    );
+
+  const talkedPoints1 = vl
+    .markPoint({ filled: true, size: 80 })
+    .data(base.data)
+    .transform(...comfortableTransform,
+                 vl.calculate('"Talked"').as("Type"))
+    .encode(
+      vl.y().fieldN("Entity").sort("-Comfortable"),
+      vl.x().fieldQ("Talked to friends or family"),
+      vl.color()
+      .fieldN("Type")
+     // .scale({ domain: ["Comfortable", "Talked"], range: ["orange", "purple"] })
+      .legend({ title: "Indicator" }),
+      vl.tooltip().fieldQ("Talked to friends or family"),
+    );
+
+  return vl
+    .layer(lineComfortable, comfortPoints, talkedPoints1)
+    .width(250)
+    .height(150)
+    .title("Perceived comfort vs doing so").render();
+}
+//display(await connectedPlot(data, {width: 700}));
+```
+```js
+const input = await FileAttachment("data/comfort_talked_about.csv").csv();
+```
+<div class="grid grid-cols-1">
+  <div class="card">
+    ${resize((width) => connectedPlot(input, {width:700}))}
+  </div>
+</div>
