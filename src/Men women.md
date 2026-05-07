@@ -1,4 +1,4 @@
-# Eigen Plots
+# Social Factors
 
 
 De grafiek toont voor elk continent het percentage mannen en vrouwen dat aangeeft vrienden of familie te kennen die kampen met angst of depressie. In de meeste continenten ligt het percentage voor vrouwen hoger, wat erop wijst dat vrouwen vaker opmerken of melden dat er mentale‑gezondheidsproblemen voorkomen in hun sociale omgeving. In Afrika en Azië is het verschil tussne mannen en vrouwen klein, slechts 1% - 1,5%.
