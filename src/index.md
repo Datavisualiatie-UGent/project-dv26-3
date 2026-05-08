@@ -406,6 +406,7 @@ display(chart_zoom(countries, countrymesh, valuemap, approach_description,countr
   border-radius: 999px;
   font-weight: 600;
   font-size: 1rem;
+  margin-top: 2rem /*button beetje naar beneden*/
 }
 
 .hero-button:hover {
