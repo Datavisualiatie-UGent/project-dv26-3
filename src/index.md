@@ -369,7 +369,7 @@ display(chart_zoom(countries, countrymesh, valuemap, approach_description,countr
   flex-direction: column;
   align-items: center;
   font-family: var(--sans-serif);
-  margin: 4rem 0 8rem;
+  margin: 0.5rem 0 5rem;
   text-wrap: balance;
   text-align: center;
 }
@@ -399,7 +399,7 @@ display(chart_zoom(countries, countrymesh, valuemap, approach_description,countr
 
 .hero-button {
   display: inline-block;
-  padding: 0.8rem 1.6rem;
+  padding: 1rem 2rem; /*hoogte en breedte van button*/
   background-color: #2564eb4a;
   color: #fff;
   text-decoration: none;
@@ -425,8 +425,8 @@ display(chart_zoom(countries, countrymesh, valuemap, approach_description,countr
 
 /*-- Explore gedeelte op hoofdpagina --*/
 #explore-section {
-  margin-top: 4rem;
-  padding-top: 3rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
   text-align: center;
 }
@@ -438,10 +438,9 @@ display(chart_zoom(countries, countrymesh, valuemap, approach_description,countr
 
 /* Wrapper die de Explore-sectie centreert */
 .explore-wrapper {
-  max-width: 900px;      /* maakt de sectie smaller */
+  max-width: 700px;      /* maakt de sectie smaller */
   margin: 0 auto;        /* centreert horizontaal */
   text-align: center;    /* centreert tekst */
-  padding: 0rem 0rem;    /* wat ademruimte */
 }
 
 
