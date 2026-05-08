@@ -3,12 +3,6 @@ title: Example dashboard
 toc: false
 ---
 
-<!-- afbeelding -->
-<div class="hero-image">
-  <img src="/assets/brain-world.jpg" 
-  alt="Header image">
-</div>
-
 <!-- titel en subtitel en knop 'start exploring' -->
 
 <div class="hero">
@@ -263,6 +257,7 @@ function chart_zoom(countries, countrymesh, valuemap, approach_description,count
       d3.zoomIdentity,
       d3.zoomTransform(svg.node()).invert([width/2,height/2])
     );
+    color_continent();
   }
 
   function color_continent(){
@@ -317,6 +312,7 @@ function chart_zoom(countries, countrymesh, valuemap, approach_description,count
         .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
       d3.pointer(event, svg.node())
     );
+    color_country();
   }
 
   function zoomed(event) {
@@ -463,4 +459,3 @@ display(chart_zoom(countries, countrymesh, valuemap, approach_description,countr
 
 
 </style>
-
