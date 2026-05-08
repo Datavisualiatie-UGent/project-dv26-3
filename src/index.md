@@ -20,9 +20,11 @@ toc: false
       <a href="#explore-section" class="hero-button">Start exploring ↓ </a>
 </div>
 
+We begin with some data exploration. 
+In the world map below, we visualize the perentage of people that use a certain approach to deal with anxiety and/or depression. The possible approaches are: engaging in religious/spiritual activities, improving healthy lifestyle behaviors, making a change to work situation, making a change to personal relationships,  talking to friends or family, taking prescribed medication, spending time in nature/the outdoors, and talking to a mental health professional. 
 
+First, the world map is colored by the average percentage per continent. When you click on a country, the map zooms in to the continent that country is part of and the map is colored by country. Countries with no data are colored in grey.  (kleine lettertjes: Russia is part of Asia, but for clarity it is excluded from the zoom on Asia) When you click on the background of the map, the map is zoomed out again and colored by continent. There is an interactive element to switch between the different approaches and the coloring of the map (by country/continent).
 ```js
-
 import * as d3 from "npm:d3";
 globalThis.d3 = d3;
 ```
@@ -348,9 +350,9 @@ function chart_zoom(countries, countrymesh, valuemap, approach_description,count
 };
 display(chart_zoom(countries, countrymesh, valuemap, approach_description,countryToContinent, continentBounds));
 ```
-</div>
 
 From this exploration, we conclude that the most popular approaches are improving healthy lifestyle behaviours,  talking to friends and family, and spending time in nature/the outdoors.
+</div>
 ---
 
 <!-- styles om de opmaak van index pagina aan te passen (css)
