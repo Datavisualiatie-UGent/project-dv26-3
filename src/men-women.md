@@ -1,3 +1,7 @@
+---
+title: Social Factors
+---
+
 # Social Factors
 
 The chart shows, for each continent, the percentage of men and women who report knowing friends or family members who struggle with anxiety or depression. In most continents, the percentage is higher for women, suggesting that women more often notice or report the presence of mental‑health issues within their social environment. In Africa and Asia, the difference between men and women is small, only about 1% to 1.5%.

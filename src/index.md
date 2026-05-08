@@ -3,26 +3,22 @@ title: Example dashboard
 toc: false
 ---
 
-<!-- titel en subtitel -->
+<!-- afbeelding -->
+<div class="hero-image">
+  <img src="/assets/brain-world.jpg" 
+  alt="Header image">
+</div>
+
+<!-- titel en subtitel en knop 'start exploring' -->
 
 <div class="hero">
   <h1>Understanding Anxiety & Depression Worldwide</h1>
   <h2>An exploration of mental health across countries and continents</h2>
+      <a href="#explore-section" class="hero-button">Start exploring ↓ </a>
 </div>
 
-<!-- navigatieblok-->
-<nav class="navbar">
-  <div class="nav-container">
-    <a class="nav-logo" href="/">Mental Health Insights</a>
-    <div class="nav-links">
-      <a href="/Comparison">Comparison</a>
-      <a href="/Men women">Social Factors</a>
-      <!-- kunnen we nog toev 'About the data- tablad'
-      <a href="/About">About the Data</a> -->
-    </div>
-  </div>
-</nav>
-
+<!-- de rest van de pagina in een blok gezet, zodat deze makkelij kkan aangepast worden qua lay out. ook fade in toegevoegd voor het 'smooth scrollen' -->
+<div id="explore-section"  class="fade-in explore-wrapper">
 
 On this page, we'll do some data exploration. 
 First, we show a world map colored according to our data. We visualize how many percent of people of each country said they used following approach when dealing with anxiety or depression. You can change the approach using the select item. The countries where we have no data of are colored grey.
@@ -355,12 +351,19 @@ function chart_zoom(countries, countrymesh, valuemap, approach_description,count
 };
 display(chart_zoom(countries, countrymesh, valuemap, approach_description,countryToContinent, continentBounds));
 ```
+</div>
+
+
 ---
 
 <!-- styles om de opmaak van index pagina aan te passen (css)
 -->
 
 <style>
+ html {
+  scroll-behavior: smooth;
+}
+
 .hero {
   display: flex;
   flex-direction: column;
@@ -409,44 +412,54 @@ display(chart_zoom(countries, countrymesh, valuemap, approach_description,countr
   background-color: #1d4ed8;
 }
 
-/* --- NAVIGATIE BALK styling --- */
-
-.navbar {
-  position: sticky;
-  top: 0;
-  width: 80%;
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
-  z-index: 1000;
+/*afbeelding*/
+.hero-image img {
+  width: 15%;
+  height: 150px;     /* pas aan naar smaak */
+  object-fit: cover; /* zorgt voor mooie crop */
+  display: block;
+  margin: auto;
 }
 
-.nav-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0.6rem 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+/*-- Explore gedeelte op hoofdpagina --*/
+#explore-section {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
 }
 
-.nav-logo {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1f2937;
-  text-decoration: none;
+#explore-section h1,
+#explore-section h2 {
+  margin-top: 0;
 }
 
-.nav-links a {
-  margin-left: 1.2rem;
-  text-decoration: none;
-  color: #374151;
-  font-size: 0.95rem;
-  font-weight: 500;
+/* Wrapper die de Explore-sectie centreert */
+.explore-wrapper {
+  max-width: 900px;      /* maakt de sectie smaller */
+  margin: 0 auto;        /* centreert horizontaal */
+  text-align: center;    /* centreert tekst */
+  padding: 0rem 0rem;    /* wat ademruimte */
 }
 
-.nav-links a:hover {
-  color: #2563eb;
+
+/* --- FADE-IN ANIMATIE --- */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
 }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 
 
 </style>
