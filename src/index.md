@@ -3,6 +3,11 @@ title: Example dashboard
 toc: false
 ---
 
+<!-- afbeelding -->
+<div class="hero-image">
+  <img src="/assets/brain-world.jpg" 
+  alt="Header image">
+</div>
 <!-- titel en subtitel en knop 'start exploring' -->
 
 <div class="hero">
