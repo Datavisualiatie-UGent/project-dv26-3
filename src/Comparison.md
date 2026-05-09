@@ -46,6 +46,7 @@ return vl.markBar().data(data)
   .render()
   //.scale({ range:["orange", "purple"] }).
  }
+display(await DynamicPlot(countries)
 ```
 <div class="grid grid-cols-1">
   <div class="card">
