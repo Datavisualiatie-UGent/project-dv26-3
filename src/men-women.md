@@ -4,7 +4,7 @@ title: Social Factors
 
 # Social Factors
 
-The chart shows, for each continent, the percentage of men and women who report knowing friends or family members who struggle with anxiety or depression. In most continents, the percentage is higher for women, suggesting that women more often notice or report the presence of mental‑health issues within their social environment. In Africa and Asia, the difference between men and women is small, only about 1% to 1.5%.
+This chart shows, for each continent, the mean percentage of men and women who report knowing friends or family members who struggle with anxiety or depression. In most continents, this percentage is higher for women, suggesting that women notice or report the presence of mental‑health issues within their social environment more often. In Africa and Asia, the difference between men and women is small, only about 1% to 1.5 percent.
 
 ```js
 const data = await FileAttachment("data/men-women-friends-TRANFS.csv").csv();
@@ -118,7 +118,7 @@ return vl.layer(
 }
 display(await scatterPlot(data, {width: 700}));
 ```
-CONNECTED DOT PLOT die weergeeft hoe comfortable local people zich voelen om over angsstoornissen en depressie te praten t.o.v. hoeveel procent erover heeft gepraat wanneer ze zelf lijden aan een angsstoornis of depressie
+The following chart displays the difference between how comfortable people are with talking about anxiety/depression and which percentage of people actually talked about it when they were anxiuos/depressed. Here the means are showed per continent. As shown by the plot, on average the number of people who talk about it lies significantly higher than the number of people who are comfortable talking about it. 
 
 ```js
 // BASIS: dezelfde filtering + continentselectie
@@ -186,13 +186,9 @@ function connectedPlot(data, {width = 700, heightTop = 150, heightBottom = 300 }
     .height(150)
     .title("Perceived comfort vs doing so").render();
 }
-//display(await connectedPlot(data, {width: 700}));
+display(await connectedPlot(data, {width: 700}));
 ```
 ```js
 const input = await FileAttachment("data/comfort_talked_about.csv").csv();
 ```
-<div class="grid grid-cols-1">
-  <div class="card">
-    ${resize((width) => connectedPlot(input, {width:700}))}
-  </div>
-</div>
+
