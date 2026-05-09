@@ -2,9 +2,8 @@
 title: Comparison
 toc: false
 ---
-On this page we'll look deeper into the connection between the different ways in which people deal with anxiety/depression. Firstly we give a dynamic plot so you can explore these possible relations. After we highlight 3 specific correlations.
+On this page we'll look deeper into the connection between the different ways in which people deal with anxiety/depression. Firstly we give a dynamic plot so you can explore these possible relations. After we highlight 3 specific connections.
 
-## Dynamic Plot
 In the following dynamic bar chart we compare the possible solutions against each other.
 By choosing 2 solutions in the menu bar, the mean number of people per continent who dealth with anxiety and/or depression
 and used that solution are portrayed. By looking at different combinantions you can discover relations.
@@ -54,7 +53,6 @@ return vl.markBar().data(data)
   </div>
 </div>
 
-## Static Plots
 Below, some interesrting relations between 2 solutions are displayed using scatterplots.
 When you click on a dot, all points from that continent will light up, so you can easily compare within the continents.
 
