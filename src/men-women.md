@@ -121,6 +121,7 @@ display(await scatterPlot(data, {width: 700}));
 The following chart displays the difference between how comfortable people are with talking about anxiety/depression and which percentage of people actually talked about it when they were anxiuos/depressed. Here the means are showed per continent. As shown by the plot, on average the number of people who talk about it lies significantly higher than the number of people who are comfortable talking about it. 
 
 ```js
+const data = await FileAttachment("data/comfort_talked_about.csv").csv();
 // BASIS: dezelfde filtering + continentselectie
 
 function connectedPlot(data, {width = 700, heightTop = 150, heightBottom = 300 } = {}) {
