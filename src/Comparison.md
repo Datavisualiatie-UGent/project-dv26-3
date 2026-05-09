@@ -16,6 +16,44 @@ const questions= ['Engaged in religious/spiritual activities','Took prescribed m
 const colors= ['blue','pink','yellow']
 ```
 ```js
+viewof selection = {
+  const form = Inputs.form({
+    q1: Inputs.select(questions, {label: "Solution 1", value: questions[0]}),
+    q2: Inputs.select(questions, {label: "Solution 2", value: questions[1]})
+  });
+  return form;
+}
+```
+```js
+fuction Plot(data,{width}={}){
+return vl.markBar().data(data)
+  .transform(
+    vl.filter('datum.Continent != "All"'),
+    // Reference the selection from the other cell here
+    vl.calculate(`datum['${selection.q1}']`).as('dynamicQ1'),
+    vl.calculate(`datum['${selection.q2}']`).as('dynamicQ2'),
+    vl.fold(['dynamicQ1', 'dynamicQ2']).as('Category', 'Percentage')
+  )
+  .encode(
+    vl.y().fieldN('Continent').title(null),
+    vl.x().average('Percentage').title('Mean Percentage'),
+    vl.yOffset().fieldN('Category'),
+    vl.color().fieldN('Category').scale({ range:["orange", "purple"] }).title('World region')
+    .legend({
+      labelExpr: `datum.label == 'dynamicQ1' ? '${selection.q1}' : '${selection.q2}'`,
+      labelFontSize:'11',
+      labelLimit:'250'
+    })
+  ).render()
+}
+```
+<div class="grid grid-cols-1">
+  <div class="card">
+    ${resize((width) => Plot(countries, {width}))}
+  </div>
+</div>
+
+```js
 function DynamicPlot(data,{width}={}){
 return vl.markBar().data(data)
   .params(
