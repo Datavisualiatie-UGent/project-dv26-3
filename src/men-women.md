@@ -12,7 +12,7 @@ const data = await FileAttachment("data/men-women-friends-TRANFS.csv").csv();
 function overlappingBarChart(data, {width = 700, heightTop = 150, heightBottom = 300} = {}){
   const selectContinent = vl.selectPoint().fields('Entity');
 
-   const maleBar = vl.markBar({ opacity: 0.7, size: 20 })
+   const maleBar = vl.markBar({ opacity: 0.8, size: 20 })
     .transform(
       vl.filter('datum.gender == "Male" && (datum.Entity == "Africa" || datum.Entity == "Europe" || datum.Entity == "Asia" || datum.Entity == "North America" || datum.Entity == "South America" || datum.Entity == "Oceania")' ), 
       vl.calculate('format(datum.Percentage, ".1f") + "%"').as("PercentageLabel")
@@ -21,7 +21,7 @@ function overlappingBarChart(data, {width = 700, heightTop = 150, heightBottom =
       vl.x().fieldQ("Percentage"),
       vl.y().fieldN("Entity").title(null),
       vl.color().fieldN("gender")
-        .scale({ domain: ["Male", "Female"], range: ["orange", "purple"] }).title('Gender'),
+        .scale({ domain: ["Male", "Female"] }).title('Gender'),
       vl.tooltip([
         { field: "gender", type: "nominal", title: "Gender" },
         { field: "PercentageLabel", type: "nominal", title: "Percentage"}
@@ -37,7 +37,7 @@ function overlappingBarChart(data, {width = 700, heightTop = 150, heightBottom =
       vl.x().fieldQ("Percentage").title("Share who know friends or family who have been anxious or depressed"),
       vl.y().fieldN("Entity"),
       vl.color().fieldN("gender")
-        .scale({ domain: ["Male", "Female"], range: ["orange", "purple"] }),
+        .scale({ domain: ["Male", "Female"] }),
       vl.tooltip([
         { field: "gender", type: "nominal", title: "Gender" },
         { field: "PercentageLabel", type: "nominal", title: "Percentage" }

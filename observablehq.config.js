@@ -2,6 +2,27 @@
 export default {
   // The app’s title; used in the sidebar and webpage titles.
   title: "Project Datavisualisatie",
+  root: "src",   // The path to the source root.
+  //theme: "glacier",
+  // brain world foto als favicon
+  head: `<link rel="icon" href="assets/brain-world.jpg" type="image/jpeg" sizes="32x32">
+  <link rel="stylesheet" href="/styles.css">
+  `,
+  theme: "glacier",
+  pager: true,
+  header: `<nav class="navbar">
+      <div class="nav-container">
+        <a class="nav-logo" href="/">Mental Health Insights</a>
+        <div class="nav-links">
+          <a href="/comparison">Comparison</a>
+          <a href="/men-women">Social Factors</a>
+        </div>
+      </div>
+    </nav>`, 
+
+  footer: "", 
+  sidebar: false
+};
 
   // The pages and sections in the sidebar. If you don’t specify this option,
   // all pages will be listed in alphabetical order. Listing pages explicitly
@@ -16,11 +37,6 @@ export default {
   //   }
   // ],
 
-  // Content to add to the head of the page, e.g. for a favicon:
-  head: '<link rel="icon" href="observable.png" type="image/png" sizes="32x32">',
-
-  // The path to the source root.
-  root: "src",
 
   // Some additional configuration options and their defaults:
   // theme: "default", // try "light", "dark", "slate", etc.
@@ -35,4 +51,4 @@ export default {
   // typographer: false, // smart quotes and other typographic improvements
   // preserveExtension: false, // drop .html from URLs
   // preserveIndex: false, // drop /index from URLs
-};
+

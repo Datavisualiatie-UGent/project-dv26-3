@@ -372,6 +372,8 @@ display(chart_zoom(countries, countrymesh, valuemap, approach_description,countr
   margin: 0.5rem 0 5rem;
   text-wrap: balance;
   text-align: center;
+  max-width: 1000px;
+  padding: 2rem 1rem;
 }
 
 .hero h1 {
@@ -428,19 +430,14 @@ display(chart_zoom(countries, countrymesh, valuemap, approach_description,countr
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
-  text-align: center;
-}
-
-#explore-section h1,
-#explore-section h2 {
-  margin-top: 0;
 }
 
 /* Wrapper die de Explore-sectie centreert */
 .explore-wrapper {
-  max-width: 700px;      /* maakt de sectie smaller */
+  max-width: 1200px;      /* maakt de sectie smaller */
   margin: 0 auto;        /* centreert horizontaal */
   text-align: center;    /* centreert tekst */
+  padding: 1rem 20rem;
 }
 
 
