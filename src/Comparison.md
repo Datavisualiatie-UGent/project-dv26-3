@@ -9,7 +9,7 @@ toc: false
 </p>
 </div>
 
-<div class="plots">
+<div class="comp">
   <div class="comp-text">
  In the following dynamic bar chart we compare the possible solutions against each other.
 By choosing 2 solutions in the menu bar, the mean number of people per continent who dealth with anxiety and/or depression
@@ -245,7 +245,7 @@ display(await staticPlot3(countries,{width}))
   border-top: 1px solid #e5e7eb;
 }
 
-.plots-text {
+.comp-text {
   max-width: 700px;
   margin: 0 auto;
   align-items: center;
