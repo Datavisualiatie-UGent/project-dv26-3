@@ -12,10 +12,8 @@ In this section, we examine how men and women differ in their comfort levels whe
 </div>
 
 <div class="plots">
-  <div class="comp-text">
-This chart shows, for each continent, the mean percentage of men and women who report knowing friends or family members who struggle with anxiety or depression. In most continents, this percentage is higher for women, suggesting that women notice or report the presence of mental‑health issues within their social environment more often. In Africa and Asia, the difference between men and women is small, only about 1% to 1.5 percent.
-  </div>
-
+<div class = "plot-row">
+  <div class="plot-col">
 
 ```js
 const data = await FileAttachment("data/men-women-friends-TRANFS.csv").csv();
@@ -63,13 +61,20 @@ function overlappingBarChart(data, {width = 700, heightTop = 150, heightBottom =
     .render();
 }
 display(await overlappingBarChart(data, {width: 700}));
-
-
 ```
+</div>
+<div class="comp-text">
+This chart shows, for each continent, the mean percentage of men and women who report knowing friends or family members who struggle with anxiety or depression. In most continents, this percentage is higher for women, suggesting that women notice or report the presence of mental‑health issues within their social environment more often. In Africa and Asia, the difference between men and women is small, only about 1% to 1.5 percent.
+  </div>
+</div>
 
+
+<div class="plot-row">
 <div class="comp-text">
 The following chart displays the difference between how comfortable people are with talking about anxiety/depression and which percentage of people actually talked about it when they were anxiuos/depressed. Here the means are showed per continent. As shown by the plot, on average the number of people who talk about it lies significantly higher than the number of people who are comfortable talking about it. 
 </div>
+
+<div class="plot-col">
 
 ```js
 const data = await FileAttachment("data/comfort_talked_about.csv").csv();
@@ -140,10 +145,11 @@ function connectedPlot(data, {width = 700, heightTop = 150, heightBottom = 300 }
 }
 display(await connectedPlot(data, {width: 700}));
 ```
-
-<div class="comp-text">
-We look at this data is a little more detail in the following chart. It shows, for each country, the relationship between how comfortable people feel talking to someone when they are anxious or depressed (x‑axis) and how often they actually do so in practice (y‑axis). Many countries lie above the diagonal, indicating that people do initiate these conversations even though fewer report feeling comfortable discussing such issues. The interactive features make it possible to clearly compare individual countries and regions.
 </div>
+</div>
+
+<div class="plot-row">
+<div class="plot-col">
 
 ```js
 const data = await FileAttachment("data/comfort_talked_about(3).csv").csv();
@@ -211,6 +217,10 @@ display(await scatterPlot(data, {width: 700}));
 const input = await FileAttachment("data/comfort_talked_about.csv").csv();
 ```
 </div>
+<div class="comp-text">
+We look at this data is a little more detail in the following chart. It shows, for each country, the relationship between how comfortable people feel talking to someone when they are anxious or depressed (x‑axis) and how often they actually do so in practice (y‑axis). Many countries lie above the diagonal, indicating that people do initiate these conversations even though fewer report feeling comfortable discussing such issues. The interactive features make it possible to clearly compare individual countries and regions.
+</div>
+</div>
 
 ---
 <style>
@@ -243,21 +253,48 @@ const input = await FileAttachment("data/comfort_talked_about.csv").csv();
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-  /*-- Explore gedeelte op hoofdpagina --*/
+ 
 .plots {
   margin-top: 0rem;
-  align-items: center;
-  justify-content: center;
   padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
 }
 
-.plots-text {
-  max-width: 700px;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: 0 0 0 15rem;   /* top right bottom left */
-}
+  /* Each plot+text pair sits in a two-column row */
+  .plot-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid #f3f4f6;
+        border-radius: 12px;
+
+  }
+
+  .plot-row:last-child {
+    border-bottom: none;
+  }
+
+    .plot-col {
+      border-radius: 12px;
+      border: 1.5px solid  #e5e7eb;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 1rem;
+    width: fit-content;
+  }
+
+  .text-col {
+    font-family: var(--sans-serif);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--theme-foreground-muted, #374151);
+    padding: 0 0.5rem;
+  }
+    /* Narrow screens: stack vertically */
+  @media (max-width: 700px) {
+    .plot-row {
+      grid-template-columns: 1fr;
+    }
+  }
   </style>

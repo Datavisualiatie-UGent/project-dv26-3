@@ -8,7 +8,7 @@ html {
   position: sticky;
   top: 0;
   width: 80%;
-  background: var(--theme-background-alt); /* Glacier-compatibel */  border-bottom: 1px solid #e5e7eb;
+  background: var(--theme-background); /* Glacier-compatibel */  border-bottom: 1px solid #e5e7eb;
   z-index: 1000;
   border-radius: 10px;
   margin-left: 6rem;
