@@ -240,6 +240,7 @@ display(await staticPlot3(countries,{width}))
   margin-top: 0rem;
   align-items: center;
   justify-content: center;
+  text-align: center;
   padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
 }
