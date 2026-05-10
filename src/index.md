@@ -17,13 +17,16 @@ toc: false
 </div>
 
 
+
 <div id="explore-section"  class="fade-in explore-wrapper">
+<div class="explore-text">
 
 On this page, we'll do some data exploration. 
 First, we show a world map colored according to our data. We visualize how many percent of people of each country said they used following approach when dealing with anxiety or depression. You can change the approach using the select item. The countries where we have no data of are colored grey.
 
 In the next plot, we first visualize the data summarized over each continent and when you click on a continent the map zooms in on that continent and colors the map per country instead of per continent. When you click on the background, you go back to the data per continent. You can again use the interactive item to choose the shown approach. 
 
+</div>
 
 ```js
 
@@ -369,7 +372,7 @@ display(chart_zoom(countries, countrymesh, valuemap, approach_description,countr
   align-items: center;
   justify-content: center;
   font-family: var(--sans-serif);
-  margin: 0.5rem 0 5rem;
+  margin: 0 auto;
   text-wrap: balance;
   text-align: center;
   max-width: 1000px;
@@ -427,19 +430,25 @@ display(chart_zoom(countries, countrymesh, valuemap, approach_description,countr
 
 /*-- Explore gedeelte op hoofdpagina --*/
 #explore-section {
-  margin-top: 1rem;
+  margin-top: 0rem;
   padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
 }
 
 /* Wrapper die de Explore-sectie centreert */
 .explore-wrapper {
-  max-width: 1200px;      /* maakt de sectie smaller */
+  max-width: none;   /* maakt de sectie breder */
+  width: 100%;
   margin: 0 auto;        /* centreert horizontaal */
   text-align: center;    /* centreert tekst */
-  padding: 1rem 20rem;
+  padding: 1rem 3rem;
 }
-
+.explore-text {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  margin: 0 0 0 15rem;   /* top right bottom left */
+}
 
 /* --- FADE-IN ANIMATIE --- */
 
