@@ -1,38 +1,32 @@
 ---
-title: Introduction
 toc: false
 ---
-
-<!-- afbeelding -->
 <div class="hero-image">
   <img src="/assets/brain-world.jpg" 
   alt="Header image">
 </div>
-<!-- titel en subtitel en knop 'start exploring' -->
 
 <div class="hero">
   <h1>Understanding Anxiety & Depression Worldwide</h1>
   <h2>An exploration of mental health across countries and continents</h2>
-  <p>*Maybe here some interesting intro*</p>
-  
+  <p>  </p> <!-- kleine cheat code voor beetje spacing tussen de subtitel en tekst -->
+
   <p>For our report, we use the data of the Wellcome Global Monitor, a survey that questioned people from all over the world about mental health. This survey was conducted betweed 4 August 2020 and 18 February 2021 via telephone interviews with nationally representative samples in 113 countries and territories. We will focus on following questions. First of all, how do people around the world deal with anxiety and depression? Is there a significant difference between the different continents? Is there a correlation between different approaches to dealing with anxiety/depression? 
   Lastly, we zoom in on one specific approach:  talking to friends and family. We look into the difference between men and women when it comes to knowing friends or family members who struggle with anxiety or depression. We will compare the number of people that are comfortable talking to friends and family about their mental health and the number of people that effictevely used this approach to deal with anxiety and depression. </p>
-      <a href="#explore-section" class="hero-button">Start exploring ↓ </a>
+    <a href="#explore-section" class="hero-button">Start exploring ↓ </a>
 </div>
 
-<!-- de rest van de pagina in een blok gezet, zodat deze makkelij kkan aangepast worden qua lay out. ook fade in toegevoegd voor het 'smooth scrollen' -->
+
 <div id="explore-section"  class="fade-in explore-wrapper">
 
 On this page, we'll do some data exploration. 
-First, we show a world map colored according to our data. We visualize how many percent of people of each country said they used following approach when dealing with anxiety or depression. You can change the approach using the select item. The countries, for which we don't have any data, are coloured gray.
+First, we show a world map colored according to our data. We visualize how many percent of people of each country said they used following approach when dealing with anxiety or depression. You can change the approach using the select item. The countries where we have no data of are colored grey.
 
 In the next plot, we first visualize the data summarized over each continent and when you click on a continent the map zooms in on that continent and colors the map per country instead of per continent. When you click on the background, you go back to the data per continent. You can again use the interactive item to choose the shown approach. 
 
-We begin with some data exploration. 
-In the world map below, we visualize the perentage of people that use a certain approach to deal with anxiety and/or depression. The possible approaches are: engaging in religious/spiritual activities, improving healthy lifestyle behaviors, making a change to work situation, making a change to personal relationships,  talking to friends or family, taking prescribed medication, spending time in nature/the outdoors, and talking to a mental health professional. 
 
-First, the world map is colored by the average percentage per continent. When you click on a country, the map zooms in to the continent that country is part of and the map is colored by country. Countries with no data are colored in grey.  (kleine lettertjes: Russia is part of Asia, but for clarity it is excluded from the zoom on Asia) When you click on the background of the map, the map is zoomed out again and colored by continent. There is an interactive element to switch between the different approaches and the coloring of the map (by country/continent).
 ```js
+
 import * as d3 from "npm:d3";
 globalThis.d3 = d3;
 ```
@@ -268,7 +262,6 @@ function chart_zoom(countries, countrymesh, valuemap, approach_description,count
       d3.zoomIdentity,
       d3.zoomTransform(svg.node()).invert([width/2,height/2])
     );
-    color_continent();
   }
 
   function color_continent(){
@@ -323,7 +316,6 @@ function chart_zoom(countries, countrymesh, valuemap, approach_description,count
         .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
       d3.pointer(event, svg.node())
     );
-    color_country();
   }
 
   function zoomed(event) {
@@ -359,15 +351,15 @@ function chart_zoom(countries, countrymesh, valuemap, approach_description,count
 display(chart_zoom(countries, countrymesh, valuemap, approach_description,countryToContinent, continentBounds));
 ```
 
-From this exploration, we conclude that the most popular approaches are improving healthy lifestyle behaviours,  talking to friends and family, and spending time in nature/the outdoors.
+
 </div>
+
+
 ---
 
-<!-- styles om de opmaak van index pagina aan te passen (css)
--->
 
 <style>
- html {
+  html {
   scroll-behavior: smooth;
 }
 
@@ -375,6 +367,7 @@ From this exploration, we conclude that the most popular approaches are improvin
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   font-family: var(--sans-serif);
   margin: 0.5rem 0 5rem;
   text-wrap: balance;
@@ -406,21 +399,22 @@ From this exploration, we conclude that the most popular approaches are improvin
 
 .hero-button {
   display: inline-block;
-  padding: 1rem 2rem; /*hoogte en breedte van button*/
+  padding: 1rem 2rem;
   background-color: #2564eb4a;
   color: #fff;
   text-decoration: none;
   border-radius: 999px;
   font-weight: 600;
   font-size: 1rem;
-  margin-top: 2rem /*button beetje naar beneden*/
+  margin-top: 2rem;
 }
 
 .hero-button:hover {
   background-color: #1d4ed8;
 }
 
-/*afbeelding*/
+
+/*-- image  --*/ 
 .hero-image img {
   width: 15%;
   height: 150px;     /* pas aan naar smaak */
@@ -428,7 +422,6 @@ From this exploration, we conclude that the most popular approaches are improvin
   display: block;
   margin: auto;
 }
-
 
 /*-- Explore gedeelte op hoofdpagina --*/
 #explore-section {
@@ -470,3 +463,7 @@ From this exploration, we conclude that the most popular approaches are improvin
 
 
 </style>
+
+
+
+
