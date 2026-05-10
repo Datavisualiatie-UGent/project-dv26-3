@@ -36,7 +36,7 @@ return vl.markBar().data(data)
     vl.y().fieldN('Continent').title(null),
     vl.x().average('Percentage').title('Mean Percentage'),
     vl.yOffset().fieldN('Category'),
-    vl.color().fieldN('Category').scale({ range:["orange", "purple"] }).title('World region')
+    vl.color().fieldN('Category').title('')
     .legend({
       labelExpr: `datum.label == 'dynamicQ1' ? '${selection.q1}' : '${selection.q2}'`,
       labelFontSize:'11',
@@ -50,9 +50,9 @@ display(await Plot(countries,selection,{width}))
 Below, some interesrting relations between 2 solutions are displayed using scatterplots.
 When you click on a dot, all points from that continent will light up, so you can easily compare within the continents.
 
-The first plot shows the mean number of people who engaged in spiritiual/religious activites
-versus the mean number of people who took prescibed medication. This plot clearly shows that taking prescibed medication
-is a more common practice than engaging in religious activities in Europe and in Oceania. In Africa however it's the opposite.
+The first plot shows the mean number of people who engaged in spiritiual/religious activities
+versus the mean number of people who took prescribed medication. This plot clearly shows that taking prescribed medication
+is a more common practice than engaging in religious activities in Europe and in Oceania. In Africa however, it's the opposite.
 In Asia and North-and South-America there does not seem to be a real relation.
 
 ```js
@@ -103,8 +103,7 @@ display(await staticPlot1(countries,{width}))
 The second plot displays the mean number of people who engaged in spiritiual/religious activities
 versus the mean number of people who talked to a mental health professional. 
 Once again the countries in Africa clearly lie below the diagonal. Europe is now a bit more scattered. 
-When looking at the European countries in particular, we see that the 'Western' countries mostly lie in the upper left corner.
-Ireland is a real 'outlier' however. 
+When looking at the European countries in some more detail, we see that the 'Western' countries mostly lie in the upper left corner. Ireland however, is a real 'outlier'. 
 ```js
 function staticPlot2(data,{width}={}){
   const hover=vl.selectPoint().on('mouseover').toggle('false').nearest('false');
