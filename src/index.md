@@ -21,7 +21,7 @@ toc: false
 <div id="explore-section"  class="fade-in explore-wrapper">
 
 On this page, we'll do some data exploration. 
-First, we show a world map colored according to our data. We visualize how many percent of people of each country said they used following approach when dealing with anxiety or depression. You can change the approach using the select item. The countries where we have no data of are colored grey.
+First, we show a world map colored according to our data. We visualize how many percent of people of each country said they used following approach when dealing with anxiety or depression. You can change the approach using the select item. The countries, for which we don't have any data, are coloured gray.
 
 In the next plot, we first visualize the data summarized over each continent and when you click on a continent the map zooms in on that continent and colors the map per country instead of per continent. When you click on the background, you go back to the data per continent. You can again use the interactive item to choose the shown approach. 
 
