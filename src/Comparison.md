@@ -8,12 +8,10 @@ toc: false
 </p>
 </div>
 
-<div class="plots">
-  <div class="comp-text">
- In the following dynamic bar chart we compare the possible solutions against each other.
+<div class="comp">
+  <p> In the following dynamic bar chart we compare the possible solutions against each other.
 By choosing 2 solutions in the menu bar, the mean number of people per continent who dealth with anxiety and/or depression
-and used that solution are portrayed. By looking at different combinantions you can discover relations.
-  </div>
+and used that solution are portrayed. By looking at different combinantions you can discover relations.</p>
   
 ```js
 const questions= ['Engaged in religious/spiritual activities','Took prescribed medication','Improved healthy lifestyle behaviors','Made a change to work situation','Made a change to personal relationships','Talked to friends or family','Spent time in nature/the outdoors','Talked to mental health professional']
@@ -52,15 +50,15 @@ return vl.markBar().data(data)
 }
 display(await Plot(countries,selection,{width}))
 ```
-<div class="comp-text">
+<p> 
 Below, some interesrting relations between 2 solutions are displayed using scatterplots.
-When you click on a dot, all points from that continent will light up, so you can easily compare within the continents.
+When you click on a dot, all points from that continent will light up, so you can easily compare within the continents. 
+</p>
 <p> </p>
-The first plot shows the mean number of people who engaged in spiritiual/religious activities
+<p>The first plot shows the mean number of people who engaged in spiritiual/religious activities
 versus the mean number of people who took prescribed medication. This plot clearly shows that taking prescribed medication
 is a more common practice than engaging in religious activities in Europe and in Oceania. In Africa however, it's the opposite.
-In Asia and North-and South-America there does not seem to be a real relation.
-</div>
+In Asia and North-and South-America there does not seem to be a real relation.</p>
 
 ```js
 const countries = FileAttachment("./data/Countries_Comparison@1.csv").csv();
@@ -107,12 +105,10 @@ function staticPlot1(data,{width}={}){
 display(await staticPlot1(countries,{width}))
 
 ```
- <div class="comp-text">
-The second plot displays the mean number of people who engaged in spiritiual/religious activities
+<p>The second plot displays the mean number of people who engaged in spiritiual/religious activities
 versus the mean number of people who talked to a mental health professional. 
 Once again the countries in Africa clearly lie below the diagonal. Europe is now a bit more scattered. 
-When looking at the European countries in some more detail, we see that the 'Western' countries mostly lie in the upper left corner. Ireland however, is a real 'outlier'. 
- </div>
+When looking at the European countries in some more detail, we see that the 'Western' countries mostly lie in the upper left corner. Ireland however, is a real 'outlier'. </p>
  
 ```js
 function staticPlot2(data,{width}={}){
@@ -154,11 +150,9 @@ function staticPlot2(data,{width}={}){
 }
 display(await staticPlot2(countries,{width}))
 ```
-<div class="comp-text">
-Since previous plots showed quite similar results, we also plotted the mean number of people who took prescribed medication
+<p>Since previous plots showed quite similar results, we also plotted the mean number of people who took prescribed medication
 versus the mean number of people who talked to a mental health professional.
-Here most points lie around the diagonal, which we expected as taking medication implies you at least talked to a doctor.
-</div>
+Here most points lie around the diagonal, which we expected as taking medication implies you at least talked to a doctor.</p>
 
 ```js
 function staticPlot3(data,{width}={}){
@@ -239,11 +233,12 @@ display(await staticPlot3(countries,{width}))
   margin-top: 0rem;
   align-items: center;
   justify-content: center;
+  text-align: center;
   padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
 }
 
-.plots-text {
+.comp-text {
   max-width: 700px;
   margin: 0 auto;
   align-items: center;
