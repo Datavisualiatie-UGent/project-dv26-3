@@ -2,6 +2,8 @@
 title: Comparison
 toc: false
 ---
+
+# Comparison
 On this page we'll look deeper into the connection between the different ways in which people deal with anxiety/depression. Firstly we give a dynamic plot so you can explore these possible relations. After we highlight 3 specific connections.
 
 In the following dynamic bar chart we compare the possible solutions against each other.
