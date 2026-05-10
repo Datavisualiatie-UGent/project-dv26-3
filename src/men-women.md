@@ -1,10 +1,21 @@
 ---
 title: Social Factors
+toc: false
 ---
 
-# Social Factors
+<div class="comp">
+<h1>Social Factors</h1>
+<p>
+Social connections play a crucial role in how people cope with anxiety and depression.  
+In this section, we examine how men and women differ in their comfort levels when talking about mental health, and whether they know someone close to them who struggles with anxiety or depression. We also focus on the role of friends and family: how comfortable people feel discussing their mental health, and how often they actually rely on these social connections when dealing with anxiety or depression.
+</p>
+</div>
 
+<div class="plots">
+  <div class="comp-text">
 This chart shows, for each continent, the mean percentage of men and women who report knowing friends or family members who struggle with anxiety or depression. In most continents, this percentage is higher for women, suggesting that women notice or report the presence of mental‑health issues within their social environment more often. In Africa and Asia, the difference between men and women is small, only about 1% to 1.5 percent.
+  </div>
+
 
 ```js
 const data = await FileAttachment("data/men-women-friends-TRANFS.csv").csv();
@@ -55,7 +66,10 @@ display(await overlappingBarChart(data, {width: 700}));
 
 
 ```
+
+<div class="comp-text">
 The following chart displays the difference between how comfortable people are with talking about anxiety/depression and which percentage of people actually talked about it when they were anxiuos/depressed. Here the means are showed per continent. As shown by the plot, on average the number of people who talk about it lies significantly higher than the number of people who are comfortable talking about it. 
+</div>
 
 ```js
 const data = await FileAttachment("data/comfort_talked_about.csv").csv();
@@ -126,7 +140,10 @@ function connectedPlot(data, {width = 700, heightTop = 150, heightBottom = 300 }
 }
 display(await connectedPlot(data, {width: 700}));
 ```
+
+<div class="comp-text">
 We look at this data is a little more detail in the following chart. It shows, for each country, the relationship between how comfortable people feel talking to someone when they are anxious or depressed (x‑axis) and how often they actually do so in practice (y‑axis). Many countries lie above the diagonal, indicating that people do initiate these conversations even though fewer report feeling comfortable discussing such issues. The interactive features make it possible to clearly compare individual countries and regions.
+</div>
 
 ```js
 const data = await FileAttachment("data/comfort_talked_about(3).csv").csv();
@@ -193,4 +210,54 @@ display(await scatterPlot(data, {width: 700}));
 ```js
 const input = await FileAttachment("data/comfort_talked_about.csv").csv();
 ```
+</div>
 
+---
+<style>
+  html {
+  scroll-behavior: smooth;
+}
+
+.comp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans-serif);
+  margin: 0 auto;
+  text-wrap: balance;
+  text-align: center;
+  max-width: 1000px;
+  padding: 2rem 1rem;
+}
+
+.comp h1 {
+  margin: 1rem 0;
+  padding: 1rem 0;
+  max-width: none;
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(30deg, var(--theme-foreground-focus), currentColor);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+  /*-- Explore gedeelte op hoofdpagina --*/
+.plots {
+  margin-top: 0rem;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.plots-text {
+  max-width: 700px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 0 0 15rem;   /* top right bottom left */
+}
+  </style>
