@@ -2,8 +2,8 @@
 title: Comparison
 toc: false
 ---
+On this page we'll look deeper into the connection between the different ways in which people deal with anxiety/depression. Firstly we give a dynamic plot so you can explore these possible relations. After we highlight 3 specific connections.
 
-# Dynamic Plot
 In the following dynamic bar chart we compare the possible solutions against each other.
 By choosing 2 solutions in the menu bar, the mean number of people per continent who dealth with anxiety and/or depression
 and used that solution are portrayed. By looking at different combinantions you can discover relations.
@@ -15,6 +15,44 @@ const questions= ['Engaged in religious/spiritual activities','Took prescribed m
 ```js
 const colors= ['blue','pink','yellow']
 ```
+```js
+viewof selection = {
+  const form = Inputs.form({
+    q1: Inputs.select(questions, {label: "Solution 1", value: questions[0]}),
+    q2: Inputs.select(questions, {label: "Solution 2", value: questions[1]})
+  });
+  return form;
+}
+```
+```js
+fuction Plot(data,{width}={}){
+return vl.markBar().data(data)
+  .transform(
+    vl.filter('datum.Continent != "All"'),
+    // Reference the selection from the other cell here
+    vl.calculate(`datum['${selection.q1}']`).as('dynamicQ1'),
+    vl.calculate(`datum['${selection.q2}']`).as('dynamicQ2'),
+    vl.fold(['dynamicQ1', 'dynamicQ2']).as('Category', 'Percentage')
+  )
+  .encode(
+    vl.y().fieldN('Continent').title(null),
+    vl.x().average('Percentage').title('Mean Percentage'),
+    vl.yOffset().fieldN('Category'),
+    vl.color().fieldN('Category').scale({ range:["orange", "purple"] }).title('World region')
+    .legend({
+      labelExpr: `datum.label == 'dynamicQ1' ? '${selection.q1}' : '${selection.q2}'`,
+      labelFontSize:'11',
+      labelLimit:'250'
+    })
+  ).render()
+}
+```
+<div class="grid grid-cols-1">
+  <div class="card">
+    ${resize((width) => Plot(countries, {width}))}
+  </div>
+</div>
+
 ```js
 function DynamicPlot(data,{width}={}){
 return vl.markBar().data(data)
@@ -53,7 +91,6 @@ return vl.markBar().data(data)
   </div>
 </div>
 
-# Static Plots
 Below, some interesrting relations between 2 solutions are displayed using scatterplots.
 When you click on a dot, all points from that continent will light up, so you can easily compare within the continents.
 
