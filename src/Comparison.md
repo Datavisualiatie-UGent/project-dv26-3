@@ -238,6 +238,8 @@ display(await staticPlot3(countries,{width}))
   /*-- Explore gedeelte op hoofdpagina --*/
 .plots {
   margin-top: 0rem;
+  align-items: center;
+  justify-content: center;
   padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
 }
@@ -245,6 +247,8 @@ display(await staticPlot3(countries,{width}))
 .plots-text {
   max-width: 700px;
   margin: 0 auto;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   margin: 0 0 0 15rem;   /* top right bottom left */
 }
