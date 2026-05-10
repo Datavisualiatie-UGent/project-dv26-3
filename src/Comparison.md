@@ -16,16 +16,14 @@ const questions= ['Engaged in religious/spiritual activities','Took prescribed m
 const colors= ['blue','pink','yellow']
 ```
 ```js
-viewof selection = {
-  const form = Inputs.form({
-    q1: Inputs.select(questions, {label: "Solution 1", value: questions[0]}),
-    q2: Inputs.select(questions, {label: "Solution 2", value: questions[1]})
-  });
-  return form;
-}
+// Define the input
+const selection = view(Inputs.form({
+  q1: Inputs.select(questions, {label: "Solution 1", value: questions[0]}),
+  q2: Inputs.select(questions, {label: "Solution 2", value: questions[1]})
+}));
 ```
 ```js
-fuction Plot(data,{width}={}){
+fuction Plot(data,selection,{width}={}){
 return vl.markBar().data(data)
   .transform(
     vl.filter('datum.Continent != "All"'),
@@ -46,12 +44,8 @@ return vl.markBar().data(data)
     })
   ).render()
 }
+display(await Plot(countries,selection,{width}))
 ```
-<div class="grid grid-cols-1">
-  <div class="card">
-    ${resize((width) => Plot(countries, {width}))}
-  </div>
-</div>
 
 ```js
 function DynamicPlot(data,{width}={}){
