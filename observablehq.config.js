@@ -3,7 +3,6 @@ export default {
   // The app’s title; used in the sidebar and webpage titles.
   title: "Project Datavisualisatie",
   root: "src",   // The path to the source root.
-  //theme: "glacier",
   // brain world foto als favicon
   head: `<link rel="icon" href="assets/brain-world.jpg" type="image/jpeg" sizes="32x32">
   <link rel="stylesheet" href="/styles.css">
@@ -14,7 +13,7 @@ export default {
       <div class="nav-container">
         <a class="nav-logo" href="/">Mental Health Insights</a>
         <div class="nav-links">
-          <a href="/comparison">Comparison</a>
+          <a href="/Comparison">Comparison</a>
           <a href="/men-women">Social Factors</a>
         </div>
       </div>
