@@ -16,16 +16,14 @@ const questions= ['Engaged in religious/spiritual activities','Took prescribed m
 const colors= ['blue','pink','yellow']
 ```
 ```js
-viewof selection = {
-  const form = Inputs.form({
-    q1: Inputs.select(questions, {label: "Solution 1", value: questions[0]}),
-    q2: Inputs.select(questions, {label: "Solution 2", value: questions[1]})
-  });
-  return form;
-}
+// Define the input
+const selection = view(Inputs.form({
+  q1: Inputs.select(questions, {label: "Solution 1", value: questions[0]}),
+  q2: Inputs.select(questions, {label: "Solution 2", value: questions[1]})
+}));
 ```
 ```js
-fuction Plot(data,{width}={}){
+function Plot(data,selection,{width}={}){
 return vl.markBar().data(data)
   .transform(
     vl.filter('datum.Continent != "All"'),
@@ -46,50 +44,8 @@ return vl.markBar().data(data)
     })
   ).render()
 }
+display(await Plot(countries,selection,{width}))
 ```
-<div class="grid grid-cols-1">
-  <div class="card">
-    ${resize((width) => Plot(countries, {width}))}
-  </div>
-</div>
-
-```js
-function DynamicPlot(data,{width}={}){
-return vl.markBar().data(data)
-  .params(
-    vl.param('Question1').value(questions[0]).bind(vl.menu(questions)),
-    vl.param('Question2').value(questions[1]).bind(vl.menu(questions))
-  )
-  .transform(
-    vl.filter('datum.Continent != "All"'),
-    // 1. Create the dynamic field first
-    vl.calculate('datum[Question1]').as('dynamicQ1'),
-     vl.calculate('datum[Question2]').as('dynamicQ2'),
-    // 2. "Fold" the two columns you want to compare into rows
-    vl.fold(['dynamicQ1', 'dynamicQ2',])
-      .as('Category', 'Percentage')
-  )
-  .encode(
-    vl.y().fieldN('Continent').title(null),
-    vl.x().average('Percentage').title('Mean Percentage'),
-    // 3. Use the new 'Category' field for grouping and color
-    vl.yOffset().fieldN('Category'),
-    vl.color().fieldN('Category').title('World region accrording to OWID')
-    .legend({
-      labelExpr: "datum.label == 'dynamicQ1' ? Question1 : Question2",
-      labelFontSize:'11',
-      labelLimit:'250'
-    })
-  )
-  .render()
-  //.scale({ range:["orange", "purple"] }).
- }
-```
-<div class="grid grid-cols-1">
-  <div class="card">
-    ${resize((width) => DynamicPlot(countries, {width}))}
-  </div>
-</div>
 
 Below, some interesrting relations between 2 solutions are displayed using scatterplots.
 When you click on a dot, all points from that continent will light up, so you can easily compare within the continents.
@@ -141,8 +97,14 @@ function staticPlot1(data,{width}={}){
     ,line).width(400)
   .height(300).render()
 };
+display(await staticPlot1(countries,{width}))
 
 ```
+The second plot displays the mean number of people who engaged in spiritiual/religious activities
+versus the mean number of people who talked to a mental health professional. 
+Once again the countries in Africa clearly lie below the diagonal. Europe is now a bit more scattered. 
+When looking at the European countries in particular, we see that the 'Western' countries mostly lie in the upper left corner.
+Ireland is a real 'outlier' however. 
 ```js
 function staticPlot2(data,{width}={}){
   const hover=vl.selectPoint().on('mouseover').toggle('false').nearest('false');
@@ -181,7 +143,11 @@ function staticPlot2(data,{width}={}){
     ,line).width(400)
   .height(300).render()
 }
+display(await staticPlot2(countries,{width}))
 ```
+Since previous plots showed quite similar results, we also plotted the mean number of people who took prescribed medication
+versus the mean number of people who talked to a mental health professional.
+Here most points lie around the diagonal, which we expected as taking medication implies you at least talked to a doctor.
 ```js
 function staticPlot3(data,{width}={}){
   const hover=vl.selectPoint().on('mouseover').toggle('false').nearest('false');
@@ -221,32 +187,10 @@ function staticPlot3(data,{width}={}){
     ,line).width(400)
   .height(300).render()
 }
+display(await staticPlot3(countries,{width}))
 ```
-<div class="grid grid-cols-1">
-  <div class="card">
-    ${resize((width) => staticPlot1(countries, {width}))}
-  </div>
-</div>
-The second plot displays the mean number of people who engaged in spiritiual/religious activities
-versus the mean number of people who talked to a mental health professional. 
-Once again the countries in Africa clearly lie below the diagonal. Europe is now a bit more scattered. 
-When looking at the European countries in particular, we see that the 'Western' countries mostly lie in the upper left corner.
-Ireland is a real 'outlier' however. 
 
-<div class="grid grid-cols-1">
-  <div class="card">
-    ${resize((width) => staticPlot2(countries, {width}))}
-  </div>
-</div>
 
-Since previous plots showed quite similar results, we also plotted the mean number of people who took prescribed medication
-versus the mean number of people who talked to a mental health professional.
-Here most points lie around the diagonal, which we expected as taking medication implies you talked to a doctor.
-<div class="grid grid-cols-1">
-  <div class="card">
-    ${resize((width) => staticPlot3(countries, {width}))}
-  </div>
-</div>
 
 
 
