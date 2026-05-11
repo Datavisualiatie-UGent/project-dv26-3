@@ -202,7 +202,7 @@ function chart_zoom(countries, countrymesh, valuemap, approach_description,count
   // Append the legend.
   svg.append("g")
       .attr("transform", "translate(20,0)")
-      .append(() => Legend(color, {title: "Share of people who used " + approach_description,                   width: 260})); 
+      .append(() => Legend(color, {title: "Share of people who used approach: " + approach_description,                   width: 260})); 
       //.append(() => Legend(color, {title: "Dealt with anxiety/depression by " + title_approach.get(approach), width: 260})); 
 
   
