@@ -10,10 +10,10 @@ toc: false
   <h1>Understanding Anxiety & Depression Worldwide</h1>
   <h2>An exploration of mental health across countries and continents</h2>
   <p>  </p> <!-- kleine cheat code voor beetje spacing tussen de subtitel en tekst -->
-  <p> Nowadays, mental health is a hot topic. A lot of people suffer from mental health disorders and that is why it is so important to talk about it. We would like to furter destigmatize this subject by looking at data about depression and anxiety, two of the more common issues. As we are optimist, we will focus on possible solutions to these disorders.
+  <p> Nowadays, mental health is a hot topic. A lot of people suffer from mental health disorders and that is why it is so important to talk about it. We would like to furter destigmatize this subject by looking at data about depression and anxiety, two of the more common mental health issues. As we are optimistic, we will focus on possible approaches to deal with these disorders.
   </p>
    <a href="#explore-section" class="hero-button">Start exploring ↓ </a>
-   <p>For our report, we use the data of the Wellcome Global Monitor, a survey that questioned people from all over the world about mental health. This survey was conducted betweed 4 August 2020 and 18 February 2021 via telephone interviews with nationally representative samples in 113 countries and territories. We will focus on following questions. First of all, how do people around the world deal with anxiety and depression? Is there a significant difference between the different continents? Is there a correlation between different approaches to dealing with anxiety/depression? 
+   <p>For our report, we use the data of the Wellcome Global Monitor, a survey that questioned people from all over the world about mental health. This survey was conducted betweed August 4 2020 and February 18 2021 via telephone interviews with nationally representative samples in 113 countries and territories. We will focus on following questions. First of all, how do people around the world deal with anxiety and depression? Is there a significant difference between the different continents? Is there a correlation between different approaches to dealing with anxiety/depression? 
   Lastly, we zoom in on one specific approach:  talking to friends and family. We look into the difference between men and women when it comes to knowing friends or family members who struggle with anxiety or depression. We will compare the number of people that are comfortable talking to friends and family about their mental health and the number of people that effictevely used this approach to deal with anxiety and depression. </p>
  
 </div>
@@ -24,9 +24,8 @@ toc: false
 <div class="explore-text">
 
 On this page, we'll do some data exploration. 
-First, we show a world map colored according to our data. We visualize how many percent of people of each country said they used following approach when dealing with anxiety or depression. You can change the approach using the select item. The countries where we have no data of are colored grey.
-
-In the next plot, we first visualize the data summarized over each continent and when you click on a continent the map zooms in on that continent and colors the map per country instead of per continent. When you click on the background, you go back to the data per continent. You can again use the interactive item to choose the shown approach. 
+Below, you see a world map colored according to our data. We visualize how many percent of people of each country said they used following approach when dealing with anxiety or depression. You can change the approach using the select item. 
+First, the data is visualized per continent (so the average percentage of people of that continent using the selected approach) and when you click on a continent the map zooms in on that continent and colors the map per country instead of per continent. The countries where we have no data of are then colored grey. When you click on the background, you go back to the data per continent. You can also use the interactive item to switch between visualization per continent or country as you like. 
 
 </div>
 
@@ -267,6 +266,7 @@ function chart_zoom(countries, countrymesh, valuemap, approach_description,count
       d3.zoomIdentity,
       d3.zoomTransform(svg.node()).invert([width/2,height/2])
     );
+    color_continent();
   }
 
   function color_continent(){
@@ -321,6 +321,7 @@ function chart_zoom(countries, countrymesh, valuemap, approach_description,count
         .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
       d3.pointer(event, svg.node())
     );
+    color_country();
   }
 
   function zoomed(event) {
@@ -356,6 +357,7 @@ function chart_zoom(countries, countrymesh, valuemap, approach_description,count
 display(chart_zoom(countries, countrymesh, valuemap, approach_description,countryToContinent, continentBounds));
 ```
 
+From this exploration, we conclude that the most popular approaches are improving healthy lifestyle behaviours,  talking to friends and family, and spending time in nature/the outdoors.
 
 </div>
 
