@@ -21,14 +21,14 @@ toc: false
 
 
 <div id="explore-section"  class="fade-in explore-wrapper">
-<div class="explore-text">
+
 
 On this page, we'll do some data exploration. 
 In the world map below, we visualize the percentage of people that use a certain approach to deal with anxiety and/or depression. The possible approaches are: engaging in religious/spiritual activities, improving healthy lifestyle behaviors, making a change to work situation, making a change to personal relationships,  talking to friends or family, taking prescribed medication, spending time in nature/the outdoors, and talking to a mental health professional. 
 
 First, the world map is colored by the average percentage per continent. When you click on a country, the map zooms in to the continent that country is part of and the map is colored by country. Countries with no data are  then colored in grey.  (Note: Russia is part of Asia, but for clarity it is excluded from the zoom on Asia.) When you click on the background of the map, the map is zoomed out again and colored by continent. There is an interactive element to switch between the different approaches and the coloring of the map (by country/continent) as you like.
 
-</div>
+
 
 ```js
 
@@ -443,7 +443,7 @@ From this exploration, we conclude that the most popular approaches are improvin
 
 /* Wrapper die de Explore-sectie centreert */
 .explore-wrapper {
-  max-width: none;   /* maakt de sectie breder */
+  max-width: 700px;   /* maakt de sectie breder */
   width: 100%;
   margin: 0 auto;        /* centreert horizontaal */
   text-align: center;    /* centreert tekst */
@@ -453,7 +453,7 @@ From this exploration, we conclude that the most popular approaches are improvin
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
-  /*margin: 0 0 0 15rem;/*   /* top right bottom left */
+  margin: 0 0 0 15rem;   /* top right bottom left */
 }
 
 /* --- FADE-IN ANIMATIE --- */
