@@ -50,6 +50,9 @@ return vl.markBar().data(data)
 }
 display(await Plot(countries,selection,{width}))
 ```
+<div class="plot-row">
+
+<div class="comp-text">
 <p> 
 Below, some interesting relations between two approaches are displayed using scatterplots.
 When you click on a dot, all points from that same continent will light up, so you can easily compare within the continents. 
@@ -59,6 +62,9 @@ When you click on a dot, all points from that same continent will light up, so y
 versus the mean number of people who took prescribed medication. This plot clearly shows that taking prescribed medication
 is a more common practice than engaging in religious activities in Europe and in Oceania. In Africa however, it's the opposite.
 In Asia and North-and South-America there does not seem to be a real relation.</p>
+</div>
+
+<div class="plot-col">
 
 ```js
 const countries = FileAttachment("./data/Countries_Comparison@1.csv").csv();
@@ -105,10 +111,12 @@ function staticPlot1(data,{width}={}){
 display(await staticPlot1(countries,{width}))
 
 ```
-<p>The second plot displays the mean number of people who engaged in spiritiual/religious activities
-versus the mean number of people who talked to a mental health professional. 
-Once again, the countries in Africa clearly lie below the diagonal. Europe is now a bit more scattered. 
-When looking at the European countries in some more detail, we see that the 'Western' countries mostly lie in the upper left corner. Ireland however, is a real 'outlier'. </p>
+</div>
+</div >
+
+<div class="plot-row">
+<div class="plot-col">
+
  
 ```js
 function staticPlot2(data,{width}={}){
@@ -150,9 +158,24 @@ function staticPlot2(data,{width}={}){
 }
 display(await staticPlot2(countries,{width}))
 ```
+
+</div>
+ <div class="comp-text">
+The second plot displays the mean number of people who engaged in spiritiual/religious activities
+versus the mean number of people who talked to a mental health professional. 
+Once again the countries in Africa clearly lie below the diagonal. Europe is now a bit more scattered. 
+When looking at the European countries in some more detail, we see that the 'Western' countries mostly lie in the upper left corner. Ireland however, is a real 'outlier'. 
+ </div>
+ </div>
+
+<div class="plot-row">
+<div class="comp-text">
 <p>Since previous plots showed quite similar results, we also plotted the mean number of people who took prescribed medication
 versus the mean number of people who talked to a mental health professional.
 Here, most points lie around the diagonal, which we expected as taking medication implies you at least talked to a doctor.</p>
+</div>
+
+<div class="plot-col">
 
 ```js
 function staticPlot3(data,{width}={}){
@@ -195,6 +218,8 @@ function staticPlot3(data,{width}={}){
 }
 display(await staticPlot3(countries,{width}))
 ```
+</div>
+</div>
 </div>
 
 ---
