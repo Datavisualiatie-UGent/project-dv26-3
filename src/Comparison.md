@@ -22,8 +22,8 @@ const colors= ['blue','pink','yellow']
 ```js
 // Define the input
 const selection = view(Inputs.form({
-  q1: Inputs.select(questions, {label: "Solution 1", value: questions[0]}),
-  q2: Inputs.select(questions, {label: "Solution 2", value: questions[1]})
+  q1: Inputs.select(questions, {label: "Approach 1", value: questions[0]}),
+  q2: Inputs.select(questions, {label: "Approach 2", value: questions[1]})
 }));
 ```
 ```js
