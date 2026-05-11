@@ -24,8 +24,9 @@ toc: false
 <div class="explore-text">
 
 On this page, we'll do some data exploration. 
-Below, you see a world map colored according to our data. We visualize how many percent of people of each country said they used following approach when dealing with anxiety or depression. You can change the approach using the select item. 
-First, the data is visualized per continent (so the average percentage of people of that continent using the selected approach) and when you click on a continent the map zooms in on that continent and colors the map per country instead of per continent. The countries where we have no data of are then colored grey. When you click on the background, you go back to the data per continent. You can also use the interactive item to switch between visualization per continent or country as you like. 
+In the world map below, we visualize the percentage of people that use a certain approach to deal with anxiety and/or depression. The possible approaches are: engaging in religious/spiritual activities, improving healthy lifestyle behaviors, making a change to work situation, making a change to personal relationships,  talking to friends or family, taking prescribed medication, spending time in nature/the outdoors, and talking to a mental health professional. 
+
+First, the world map is colored by the average percentage per continent. When you click on a country, the map zooms in to the continent that country is part of and the map is colored by country. Countries with no data are  then colored in grey.  (Note: Russia is part of Asia, but for clarity it is excluded from the zoom on Asia.) When you click on the background of the map, the map is zoomed out again and colored by continent. There is an interactive element to switch between the different approaches and the coloring of the map (by country/continent) as you like.
 
 </div>
 
