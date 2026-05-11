@@ -377,7 +377,6 @@ From this exploration, we conclude that the most popular approaches are improvin
   align-items: center;
   justify-content: center;
   font-family: var(--sans-serif);
-  margin: 0 auto;
   text-wrap: balance;
   text-align: center;
   max-width: 1000px;
@@ -444,7 +443,7 @@ From this exploration, we conclude that the most popular approaches are improvin
 /* Wrapper die de Explore-sectie centreert */
 .explore-wrapper {
   max-width: 700px;   /* maakt de sectie breder */
-  width: 100%;   
+  width: 100%;     
   text-align: center;    /* centreert tekst */
   padding: 1rem 3rem;
 }
