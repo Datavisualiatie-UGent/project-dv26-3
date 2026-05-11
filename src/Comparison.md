@@ -8,7 +8,7 @@ toc: false
 </p>
 </div>
 
-<div class="comp">
+<div class="plots">
   <p> In the following dynamic bar chart, we compare the possible approaches against each other.
 By choosing two solutions in the menu bar, the mean number of people per continent who dealt with anxiety and/or depression
 by using that approach are portrayed. By looking at different combinations, you can discover relations between the different approaches.</p>
