@@ -444,8 +444,7 @@ From this exploration, we conclude that the most popular approaches are improvin
 /* Wrapper die de Explore-sectie centreert */
 .explore-wrapper {
   max-width: 700px;   /* maakt de sectie breder */
-  width: 100%;
-  margin: 0 auto;        /* centreert horizontaal */
+  width: 100%;   
   text-align: center;    /* centreert tekst */
   padding: 1rem 3rem;
 }
