@@ -253,25 +253,50 @@ display(await staticPlot3(countries,{width}))
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-  /*-- Explore gedeelte op hoofdpagina --*/
+ 
 .plots {
   margin-top: 0rem;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
 }
 
-.comp-text {
-  max-width: 700px;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: 0 0 0 15rem;   /* top right bottom left */
-}
-  </style>
+  /* Each plot+text pair sits in a two-column row */
+  .plot-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid #f3f4f6;
+        border-radius: 12px;
 
+  }
+
+  .plot-row:last-child {
+    border-bottom: none;
+  }
+
+    .plot-col {
+      border-radius: 12px;
+      border: 1.5px solid  #e5e7eb;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 1rem;
+    width: fit-content;
+  }
+
+  .text-col {
+    font-family: var(--sans-serif);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--theme-foreground-muted, #374151);
+    padding: 0 0.5rem;
+  }
+    /* Narrow screens: stack vertically */
+  @media (max-width: 700px) {
+    .plot-row {
+      grid-template-columns: 1fr;
+    }
+  }
+  </style>
 
 
