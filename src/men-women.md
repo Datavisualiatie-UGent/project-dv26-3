@@ -141,7 +141,7 @@ function connectedPlot(data, {width = 700, heightTop = 150, heightBottom = 300 }
     .layer(lineComfortable, comfortPoints, talkedPoints1)
     .width(250)
     .height(150)
-    .title("Perceived comfort vs doing so").render();
+    .title("Comfort talking vs talking to friends/family").render();
 }
 display(await connectedPlot(data, {width: 700}));
 ```
