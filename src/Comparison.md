@@ -256,9 +256,15 @@ display(await staticPlot3(countries,{width}))
  
 .plots {
   margin-top: 0rem;
-  padding-top: 1rem;
-  border-top: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  text-wrap: balance;
   text-align: center;
+  max-width: 1000px;
+  padding: 2rem 1rem;
 }
 
   /* Each plot+text pair sits in a two-column row */
