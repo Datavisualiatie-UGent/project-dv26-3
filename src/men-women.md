@@ -64,14 +64,14 @@ display(await overlappingBarChart(data, {width: 700}));
 ```
 </div>
 <div class="comp-text">
-This chart shows, for each continent, the mean percentage of men and women who report knowing friends or family members who struggle with anxiety or depression. In most continents, this percentage is higher for women, suggesting that women notice or report the presence of mental‑health issues within their social environment more often. In Africa and Asia, the difference between men and women is small, only about 1% to 1.5 percent.
+This chart shows, for each continent, the mean percentage of men and women who report knowing friends or family members who struggle with anxiety or depression. In most continents, this percentage is higher for women, suggesting that women notice or report the presence of mental‑health issues within their social environment more often. In Africa and Asia, the difference between men and women is small, only about 1 to 1.5 percent.
   </div>
 </div>
 
 
 <div class="plot-row">
 <div class="comp-text">
-The following chart displays the difference between how comfortable people are with talking about anxiety/depression and which percentage of people actually talked about it when they were anxiuos/depressed. Here the means are showed per continent. As shown by the plot, on average the number of people who talk about it lies significantly higher than the number of people who are comfortable talking about it. 
+The following chart displays the difference between how comfortable people are with talking about anxiety/depression and what percentage of people actually talked about it when they were anxious/depressed. Here, the means are showed per continent. As shown by the plot, on average the number of people who talk about it lies significantly higher than the number of people who are comfortable talking about it. 
 </div>
 
 <div class="plot-col">
@@ -218,7 +218,7 @@ const input = await FileAttachment("data/comfort_talked_about.csv").csv();
 ```
 </div>
 <div class="comp-text">
-We look at this data is a little more detail in the following chart. It shows, for each country, the relationship between how comfortable people feel talking to someone when they are anxious or depressed (x‑axis) and how often they actually do so in practice (y‑axis). Many countries lie above the diagonal, indicating that people do initiate these conversations even though fewer report feeling comfortable discussing such issues. The interactive features make it possible to clearly compare individual countries and regions.
+We look at this data a little more in detail in the following chart. It shows, for each country, the relationship between how comfortable people feel talking to someone when they are anxious or depressed (x‑axis) and how often they actually do so in practice (y‑axis). Many countries lie above the diagonal, indicating that people do initiate these conversations even though fewer report feeling comfortable discussing such issues. The interactive features make it possible to clearly compare individual countries and regions.
 </div>
 </div>
 

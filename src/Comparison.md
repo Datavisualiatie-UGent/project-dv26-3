@@ -4,14 +4,14 @@ toc: false
 ---
 <div class="comp">
 <h1>Comparison</h1>
-<p>On this page we'll look deeper into the connection between the different ways in which people deal with anxiety/depression. Firstly we give a dynamic plot so you can explore these possible relations. After we highlight 3 specific connections.
+<p>On this page we'll look deeper into the connection between the different ways in which people deal with anxiety/depression. Firstly, we give a dynamic plot, so you can explore these possible relations. After we highlight three specific connections.
 </p>
 </div>
 
 <div class="comp">
-  <p> In the following dynamic bar chart we compare the possible solutions against each other.
-By choosing 2 solutions in the menu bar, the mean number of people per continent who dealth with anxiety and/or depression
-and used that solution are portrayed. By looking at different combinantions you can discover relations.</p>
+  <p> In the following dynamic bar chart, we compare the possible approaches against each other.
+By choosing two solutions in the menu bar, the mean number of people per continent who dealt with anxiety and/or depression
+by using that approach are portrayed. By looking at different combinations, you can discover relations between the different approaches.</p>
   
 ```js
 const questions= ['Engaged in religious/spiritual activities','Took prescribed medication','Improved healthy lifestyle behaviors','Made a change to work situation','Made a change to personal relationships','Talked to friends or family','Spent time in nature/the outdoors','Talked to mental health professional']
@@ -51,8 +51,8 @@ return vl.markBar().data(data)
 display(await Plot(countries,selection,{width}))
 ```
 <p> 
-Below, some interesrting relations between 2 solutions are displayed using scatterplots.
-When you click on a dot, all points from that continent will light up, so you can easily compare within the continents. 
+Below, some interesting relations between two approaches are displayed using scatterplots.
+When you click on a dot, all points from that same continent will light up, so you can easily compare within the continents. 
 </p>
 <p> </p>
 <p>The first plot shows the mean number of people who engaged in spiritiual/religious activities
@@ -107,7 +107,7 @@ display(await staticPlot1(countries,{width}))
 ```
 <p>The second plot displays the mean number of people who engaged in spiritiual/religious activities
 versus the mean number of people who talked to a mental health professional. 
-Once again the countries in Africa clearly lie below the diagonal. Europe is now a bit more scattered. 
+Once again, the countries in Africa clearly lie below the diagonal. Europe is now a bit more scattered. 
 When looking at the European countries in some more detail, we see that the 'Western' countries mostly lie in the upper left corner. Ireland however, is a real 'outlier'. </p>
  
 ```js
@@ -152,7 +152,7 @@ display(await staticPlot2(countries,{width}))
 ```
 <p>Since previous plots showed quite similar results, we also plotted the mean number of people who took prescribed medication
 versus the mean number of people who talked to a mental health professional.
-Here most points lie around the diagonal, which we expected as taking medication implies you at least talked to a doctor.</p>
+Here, most points lie around the diagonal, which we expected as taking medication implies you at least talked to a doctor.</p>
 
 ```js
 function staticPlot3(data,{width}={}){
