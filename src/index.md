@@ -453,7 +453,7 @@ From this exploration, we conclude that the most popular approaches are improvin
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
-  margin: 0 0 0 15rem;   /* top right bottom left */
+  /*margin: 0 0 0 15rem;/*   /* top right bottom left */
 }
 
 /* --- FADE-IN ANIMATIE --- */
