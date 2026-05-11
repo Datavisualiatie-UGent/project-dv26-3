@@ -258,6 +258,7 @@ display(await staticPlot3(countries,{width}))
   margin-top: 0rem;
   padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
+  text-align: center;
 }
 
   /* Each plot+text pair sits in a two-column row */
