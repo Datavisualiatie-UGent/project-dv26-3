@@ -102,7 +102,7 @@ function connectedPlot(data, {width = 700, heightTop = 150, heightBottom = 300 }
     .transform(...comfortableTransform)
     .encode(
       vl.y().fieldN("Entity").sort("-Comfortable").title(""),
-      vl.x().fieldQ("Comfortable").title('Mean percentage'),
+      vl.x().fieldQ("Comfortable").title('Mean percentage of people'),
       vl.x2().fieldQ("Talked to friends or family")
     );
 

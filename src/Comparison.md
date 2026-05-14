@@ -38,7 +38,7 @@ return vl.markBar().data(data)
   )
   .encode(
     vl.y().fieldN('Continent').title(null),
-    vl.x().average('Percentage').title('Mean Percentage'),
+    vl.x().average('Percentage').title('Mean percentage of people'),
     vl.yOffset().fieldN('Category'),
     vl.color().fieldN('Category').title('')
     .legend({
