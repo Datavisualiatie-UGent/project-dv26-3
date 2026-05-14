@@ -50,17 +50,16 @@ return vl.markBar().data(data)
 }
 display(await Plot(countries,selection,{width}))
 ```
+<p> 
+Below, some interesting relations between two approaches are displayed using scatterplots.
+When you click on a dot, all points from that same continent will light up, so you can easily compare within the continents. 
+</p>
 </div>
 
 <div class="plots">
 <div class="plot-row">
 
 <div class="comp-text">
-<p> 
-Below, some interesting relations between two approaches are displayed using scatterplots.
-When you click on a dot, all points from that same continent will light up, so you can easily compare within the continents. 
-</p>
-<p> </p>
 <p>The first plot shows the mean number of people who engaged in spiritiual/religious activities
 versus the mean number of people who took prescribed medication. This plot clearly shows that taking prescribed medication
 is a more common practice than engaging in religious activities in Europe and in Oceania. In Africa however, it's the opposite.
