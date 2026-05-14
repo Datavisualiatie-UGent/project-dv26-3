@@ -218,7 +218,7 @@ const input = await FileAttachment("data/comfort_talked_about.csv").csv();
 ```
 </div>
 <div class="comp-text">
-We look at this data a little more in detail in the following chart. It shows, for each country, the relationship between how comfortable people feel talking to someone when they are anxious or depressed (x‑axis) and how often they actually do so in practice (y‑axis). Many countries lie above the diagonal, indicating that people do initiate these conversations even though fewer report feeling comfortable discussing such issues. The interactive features make it possible to clearly compare individual countries and regions.
+We look at this data in a little more detail in the following chart. It shows, for each country, the relationship between how comfortable people feel talking to someone when they are anxious or depressed (x‑axis) and how often they actually do so in practice (y‑axis). Many countries lie above the diagonal, indicating that people do initiate these conversations even though fewer report feeling comfortable discussing such issues. The interactive features make it possible to clearly compare individual countries and regions.
 </div>
 </div>
 
